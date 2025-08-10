@@ -78,11 +78,12 @@ The application reads payment data from `data.json`. To add or modify payments:
 - Handles errors gracefully
 
 ### Frontend Features
-- **Timeline**: Scrollable Y-axis with date labels for each day
+- **Timeline**: Scrollable Y-axis with date labels (bottom-to-top, most recent at bottom)
 - **Team Columns**: Each team gets its own column with a header
-- **Payment Blocks**: Visual blocks positioned based on start/end dates
+- **Payment Blocks**: Visual blocks positioned based on start/end dates (green by default, red for most recent)
 - **Interactive Links**: Clicking a block opens WhatsApp with a pre-filled message
 - **Synchronized Scrolling**: Timeline and chart area scroll together
+- **Auto-scroll**: Chart starts scrolled to bottom to show most recent payments first
 
 ### WhatsApp Integration
 When a payment block is clicked, it opens WhatsApp with a message like:

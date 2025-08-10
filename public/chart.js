@@ -88,6 +88,13 @@ class PaymentChart {
         return Math.floor(timeDiff / (1000 * 60 * 60 * 24));
     }
 
+    // Calculate position from bottom (inverted Y-axis)
+    getPositionFromBottom(date, totalDays) {
+        const daysSinceStart = this.getDaysSinceStart(date);
+        // Invert the position: latest dates at bottom (position 0), oldest at top
+        return (totalDays - 1 - daysSinceStart) * this.pixelsPerDay;
+    }
+
     createWhatsAppLink(teamName, startDate, endDate) {
         const start = this.formatDateForWhatsApp(new Date(startDate));
         const end = this.formatDateForWhatsApp(new Date(endDate));
@@ -103,30 +110,30 @@ class PaymentChart {
         timelineAxis.style.height = `${totalHeight + 60}px`; // +60 for header space
         timelineAxis.innerHTML = '';
 
-        // Add grid lines and date labels
+        // Add grid lines and date labels (from bottom to top)
         let currentDate = new Date(this.dateRange.start);
         while (currentDate <= this.dateRange.end) {
-            const dayIndex = this.getDaysSinceStart(currentDate);
-            const topPosition = dayIndex * this.pixelsPerDay + 60; // +60 for header space
+            // Use inverted positioning: most recent dates at bottom
+            const bottomPosition = this.getPositionFromBottom(currentDate, totalDays) + 60; // +60 for header space
 
             // Create date label
             const dateLabel = document.createElement('div');
             dateLabel.className = 'date-label';
-            dateLabel.style.top = `${topPosition}px`;
+            dateLabel.style.top = `${bottomPosition}px`;
             dateLabel.textContent = this.formatDateForDisplay(currentDate);
             timelineAxis.appendChild(dateLabel);
 
             // Create grid line
             const gridLine = document.createElement('div');
             gridLine.className = 'grid-line';
-            gridLine.style.top = `${topPosition}px`;
+            gridLine.style.top = `${bottomPosition}px`;
             timelineAxis.appendChild(gridLine);
 
             currentDate.setDate(currentDate.getDate() + 1);
         }
     }
 
-    renderTeamColumn(teamName, payments) {
+    renderTeamColumn(teamName, payments, mostRecent) {
         const column = document.createElement('div');
         column.className = 'team-column';
         
@@ -145,13 +152,23 @@ class PaymentChart {
             // Parse dates consistently with calculateDateRange
             const startDate = new Date(payment.startDate + 'T00:00:00');
             const endDate = new Date(payment.endDate + 'T00:00:00');
-            const startDay = this.getDaysSinceStart(startDate);
-            const endDay = this.getDaysSinceStart(endDate);
-            const duration = endDay - startDay + 1;
+            const duration = this.getDaysSinceStart(endDate) - this.getDaysSinceStart(startDate) + 1;
 
             const block = document.createElement('a');
             block.className = 'payment-block';
-            block.style.top = `${startDay * this.pixelsPerDay + 60}px`; // +60 for header
+            
+            // Check if this is the most recent payment
+            const isTheMostRecent = mostRecent && 
+                                  mostRecent.team === teamName && 
+                                  mostRecent.index === index;
+            
+            if (isTheMostRecent) {
+                block.classList.add('most-recent');
+            }
+            
+            // Use inverted positioning: calculate from bottom
+            const blockBottomPosition = this.getPositionFromBottom(endDate, totalDays) + 60; // +60 for header
+            block.style.top = `${blockBottomPosition}px`;
             block.style.height = `${duration * this.pixelsPerDay - 4}px`; // -4 for spacing
             
             // Create WhatsApp link instead of using the original link
@@ -177,20 +194,52 @@ class PaymentChart {
         return column;
     }
 
+    findMostRecentPayment() {
+        let mostRecentPayment = null;
+        let mostRecentDate = null;
+        let mostRecentTeam = null;
+        let mostRecentIndex = -1;
+
+        Object.entries(this.data.teams).forEach(([teamName, payments]) => {
+            payments.forEach((payment, index) => {
+                const endDate = new Date(payment.endDate + 'T00:00:00');
+                if (!mostRecentDate || endDate > mostRecentDate) {
+                    mostRecentDate = endDate;
+                    mostRecentPayment = payment;
+                    mostRecentTeam = teamName;
+                    mostRecentIndex = index;
+                }
+            });
+        });
+
+        return {
+            payment: mostRecentPayment,
+            team: mostRecentTeam,
+            index: mostRecentIndex,
+            date: mostRecentDate
+        };
+    }
+
     renderChart() {
         this.renderTimeline();
 
         const chartArea = document.getElementById('chartArea');
         chartArea.innerHTML = '';
 
+        // Find the most recent payment across all teams
+        const mostRecent = this.findMostRecentPayment();
+
         const teams = this.data.teams;
         Object.entries(teams).forEach(([teamName, payments]) => {
-            const column = this.renderTeamColumn(teamName, payments);
+            const column = this.renderTeamColumn(teamName, payments, mostRecent);
             chartArea.appendChild(column);
         });
 
         // Synchronize scrolling between timeline and chart area
         this.synchronizeScrolling();
+        
+        // Scroll to bottom to show most recent items by default
+        this.scrollToBottom();
     }
 
     synchronizeScrolling() {
@@ -205,6 +254,18 @@ class PaymentChart {
 
         syncScroll(timelineAxis, chartArea);
         syncScroll(chartArea, timelineAxis);
+    }
+
+    scrollToBottom() {
+        // Scroll to bottom to show most recent items (they are positioned at the bottom)
+        const timelineAxis = document.getElementById('timelineAxis');
+        const chartArea = document.getElementById('chartArea');
+        
+        // Use setTimeout to ensure DOM is fully rendered
+        setTimeout(() => {
+            timelineAxis.scrollTop = timelineAxis.scrollHeight;
+            chartArea.scrollTop = chartArea.scrollHeight;
+        }, 100);
     }
 
     hideLoading() {

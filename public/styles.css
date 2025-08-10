@@ -98,8 +98,8 @@ header p {
     position: absolute;
     left: 10px;
     right: 10px;
-    background: linear-gradient(135deg, #3498db, #2980b9);
-    border: 2px solid #2980b9;
+    background: linear-gradient(135deg, #27ae60, #229954);
+    border: 2px solid #229954;
     border-radius: 6px;
     color: white;
     text-decoration: none;
@@ -117,21 +117,39 @@ header p {
 }
 
 .payment-block:hover {
-    background: linear-gradient(135deg, #e74c3c, #c0392b);
-    border-color: #c0392b;
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+    border-color: #27ae60;
     transform: translateX(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     z-index: 5;
 }
 
-.payment-block:nth-child(even) {
-    background: linear-gradient(135deg, #27ae60, #229954);
-    border-color: #229954;
+/* Most recent payment block styling */
+.payment-block.most-recent {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    border: 2px solid #c0392b;
+    box-shadow: 0 3px 6px rgba(231, 76, 60, 0.4);
+    animation: pulse 2s infinite;
 }
 
-.payment-block:nth-child(even):hover {
-    background: linear-gradient(135deg, #e67e22, #d35400);
-    border-color: #d35400;
+.payment-block.most-recent:hover {
+    background: linear-gradient(135deg, #ec7063, #e74c3c);
+    border-color: #e74c3c;
+    transform: translateX(-2px) scale(1.02);
+    box-shadow: 0 5px 10px rgba(231, 76, 60, 0.5);
+}
+
+/* Subtle pulse animation for most recent block */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 3px 6px rgba(231, 76, 60, 0.4);
+    }
+    50% {
+        box-shadow: 0 3px 6px rgba(231, 76, 60, 0.6), 0 0 0 4px rgba(231, 76, 60, 0.1);
+    }
+    100% {
+        box-shadow: 0 3px 6px rgba(231, 76, 60, 0.4);
+    }
 }
 
 .grid-line {
