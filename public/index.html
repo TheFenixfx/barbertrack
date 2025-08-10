@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barberia</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Barberia Cuenta</h1>
+            <p>Envia tu capture de pago movil haz click en un dia   </p>
+        </header>
+        
+        <div class="chart-container">
+            <div class="timeline-axis" id="timelineAxis">
+                <!-- Timeline dates will be populated by JavaScript -->
+            </div>
+            <div class="chart-area" id="chartArea">
+                <!-- Chart bars will be populated by JavaScript -->
+            </div>
+        </div>
+        
+        <div class="loading" id="loading">Loading payment data...</div>
+        <div class="error" id="error" style="display: none;">
+            Error loading data. Please check the server connection.
+        </div>
+    </div>
+
+    <script src="chart.js"></script>
+</body>
+</html>

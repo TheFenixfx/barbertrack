@@ -1,0 +1,204 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    color: #2c3e50;
+    font-size: 2.2em;
+    margin-bottom: 10px;
+}
+
+header p {
+    color: #7f8c8d;
+    font-size: 1.1em;
+}
+
+.chart-container {
+    display: flex;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    min-height: 600px;
+    position: relative;
+}
+
+.timeline-axis {
+    width: 100px;
+    background: #ecf0f1;
+    border-right: 2px solid #bdc3c7;
+    position: relative;
+    overflow-y: auto;
+    flex-shrink: 0;
+}
+
+.chart-area {
+    flex: 1;
+    position: relative;
+    overflow-x: auto;
+    overflow-y: auto;
+    display: flex;
+    align-items: flex-start;
+    padding: 0;
+}
+
+.date-label {
+    position: absolute;
+    right: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #34495e;
+    background: #ecf0f1;
+    padding: 2px 0;
+    width: 80px;
+    text-align: right;
+    border-bottom: 1px solid #d5dbdb;
+}
+
+.team-column {
+    min-width: 150px;
+    margin-right: 2px;
+    position: relative;
+    border-right: 1px solid #ecf0f1;
+}
+
+.team-header {
+    position: sticky;
+    top: 0;
+    background: #34495e;
+    color: white;
+    padding: 15px 10px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+    z-index: 10;
+    border-bottom: 2px solid #2c3e50;
+}
+
+.payment-block {
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    border: 2px solid #2980b9;
+    border-radius: 6px;
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-align: center;
+    padding: 4px;
+    min-height: 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.payment-block:hover {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    border-color: #c0392b;
+    transform: translateX(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 5;
+}
+
+.payment-block:nth-child(even) {
+    background: linear-gradient(135deg, #27ae60, #229954);
+    border-color: #229954;
+}
+
+.payment-block:nth-child(even):hover {
+    background: linear-gradient(135deg, #e67e22, #d35400);
+    border-color: #d35400;
+}
+
+.grid-line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: #ecf0f1;
+    z-index: 1;
+}
+
+.loading {
+    text-align: center;
+    padding: 50px;
+    font-size: 18px;
+    color: #7f8c8d;
+}
+
+.error {
+    text-align: center;
+    padding: 50px;
+    font-size: 18px;
+    color: #e74c3c;
+    background: #fadbd8;
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+/* Scrollbar styling */
+.timeline-axis::-webkit-scrollbar,
+.chart-area::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.timeline-axis::-webkit-scrollbar-track,
+.chart-area::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.timeline-axis::-webkit-scrollbar-thumb,
+.chart-area::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+.timeline-axis::-webkit-scrollbar-thumb:hover,
+.chart-area::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    .timeline-axis {
+        width: 80px;
+    }
+    
+    .team-column {
+        min-width: 120px;
+    }
+    
+    .date-label {
+        font-size: 10px;
+        width: 60px;
+    }
+}
