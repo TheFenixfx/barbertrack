@@ -179,11 +179,13 @@ class PaymentChart {
             // Block content
             const startFormatted = this.formatDateForDisplay(startDate);
             const endFormatted = this.formatDateForDisplay(endDate);
+            
+            //<div style="font-size: 10px; opacity: 0.9;">to</div>
+            //<div style="font-size: 11px; margin-top: 2px;">${endFormatted}</div>
             block.innerHTML = `
                 <div>
                     <div style="font-size: 11px; margin-bottom: 2px;">${startFormatted}</div>
-                    <div style="font-size: 10px; opacity: 0.9;">to</div>
-                    <div style="font-size: 11px; margin-top: 2px;">${endFormatted}</div>
+                    
                 </div>
             `;
 
