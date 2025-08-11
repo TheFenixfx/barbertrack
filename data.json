@@ -11,7 +11,9 @@
       { "startDate": "2025-07-25", "endDate": "2025-07-25", "link": "https://example.com/invoice/charlie-10" },
       { "startDate": "2025-07-26", "endDate": "2025-07-26", "link": "https://example.com/invoice/charlie-10" },
       { "startDate": "2025-07-28", "endDate": "2025-07-31", "link": "https://example.com/invoice/charlie-10" },
-      { "startDate": "2025-08-01", "endDate": "2025-08-01", "link": "https://example.com/invoice/charlie-10" }
+      { "startDate": "2025-08-01", "endDate": "2025-08-01", "link": "https://example.com/invoice/charlie-10" },
+      { "startDate": "2025-08-02", "endDate": "2025-08-02", "link": "https://example.com/invoice/charlie-10" }
+
 
     ],
     "Genesis": [
