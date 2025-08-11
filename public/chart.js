@@ -157,10 +157,9 @@ class PaymentChart {
             const block = document.createElement('a');
             block.className = 'payment-block';
             
-            // Check if this is the most recent payment
-            const isTheMostRecent = mostRecent && 
-                                  mostRecent.team === teamName && 
-                                  mostRecent.index === index;
+            // Check if this is the most recent payment for this team
+            const teamMostRecent = mostRecent[teamName];
+            const isTheMostRecent = teamMostRecent && teamMostRecent.index === index;
             
             if (isTheMostRecent) {
                 block.classList.add('most-recent');
@@ -194,30 +193,33 @@ class PaymentChart {
         return column;
     }
 
-    findMostRecentPayment() {
-        let mostRecentPayment = null;
-        let mostRecentDate = null;
-        let mostRecentTeam = null;
-        let mostRecentIndex = -1;
+    findMostRecentPaymentPerTeam() {
+        const mostRecentPerTeam = {};
 
         Object.entries(this.data.teams).forEach(([teamName, payments]) => {
+            if (payments.length === 0) return;
+            
+            let teamMostRecent = null;
+            let teamMostRecentDate = null;
+            let teamMostRecentIndex = -1;
+
             payments.forEach((payment, index) => {
                 const endDate = new Date(payment.endDate + 'T00:00:00');
-                if (!mostRecentDate || endDate > mostRecentDate) {
-                    mostRecentDate = endDate;
-                    mostRecentPayment = payment;
-                    mostRecentTeam = teamName;
-                    mostRecentIndex = index;
+                if (!teamMostRecentDate || endDate > teamMostRecentDate) {
+                    teamMostRecentDate = endDate;
+                    teamMostRecent = payment;
+                    teamMostRecentIndex = index;
                 }
             });
+
+            mostRecentPerTeam[teamName] = {
+                payment: teamMostRecent,
+                index: teamMostRecentIndex,
+                date: teamMostRecentDate
+            };
         });
 
-        return {
-            payment: mostRecentPayment,
-            team: mostRecentTeam,
-            index: mostRecentIndex,
-            date: mostRecentDate
-        };
+        return mostRecentPerTeam;
     }
 
     renderChart() {
@@ -226,12 +228,12 @@ class PaymentChart {
         const chartArea = document.getElementById('chartArea');
         chartArea.innerHTML = '';
 
-        // Find the most recent payment across all teams
-        const mostRecent = this.findMostRecentPayment();
+        // Find the most recent payment for each team individually
+        const mostRecentPerTeam = this.findMostRecentPaymentPerTeam();
 
         const teams = this.data.teams;
         Object.entries(teams).forEach(([teamName, payments]) => {
-            const column = this.renderTeamColumn(teamName, payments, mostRecent);
+            const column = this.renderTeamColumn(teamName, payments, mostRecentPerTeam);
             chartArea.appendChild(column);
         });
 
