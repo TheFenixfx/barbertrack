@@ -1,23 +1,132 @@
 {
   "teams": {
     "Alejandro": [
-      { "startDate": "2025-07-28", "endDate": "2025-07-28", "link": "https://example.com/invoice/alpha-001" }
-    ],
-    "David B": [
-      { "startDate": "2025-07-25", "endDate": "2025-07-25", "link": "https://example.com/receipt/bravo-754" }
+      {
+        "startDate": "2025-07-28",
+        "endDate": "2025-07-28",
+        "link": "backups/Alejandro/WhatsApp Image 2025-08-16 at 11.45.25 PM.jpeg"
+      },
+      {
+        "startDate": "2025-07-29",
+        "endDate": "2025-07-29",
+        "link": "backups/Alejandro/WhatsApp Image 2025-08-16 at 11.45.25 PM (1).jpeg"
+      },
+      {
+        "startDate": "2025-07-30",
+        "endDate": "2025-07-30",
+        "link": "backups/Alejandro/WhatsApp Image 2025-08-16 at 11.45.24 PM.jpeg"
+      },
+      {
+        "startDate": "2025-07-31",
+        "endDate": "2025-07-31",
+        "link": "backups/Alejandro/WhatsApp Image 2025-08-16 at 11.45.24 PM.jpeg"
+      },
+      {
+        "startDate": "2025-08-01",
+        "endDate": "2025-08-01",
+        "link": "backups/Alejandro/WhatsApp Image 2025-08-16 at 11.45.24 PM.jpeg"
+      },
+      {
+        "startDate": "2025-08-02",
+        "endDate": "2025-08-02",
+        "link": "backups/Alejandro/WhatsApp Image 2025-08-16 at 11.45.24 PM.jpeg"
+      },
+      {
+        "startDate": "2025-08-04",
+        "endDate": "2025-08-04",
+        "link": null
+      }
     ],
     "Andres V": [
-      { "startDate": "2025-07-24", "endDate": "2025-07-24", "link": "https://example.com/invoice/charlie-10" },
-      { "startDate": "2025-07-25", "endDate": "2025-07-25", "link": "https://example.com/invoice/charlie-10" },
-      { "startDate": "2025-07-26", "endDate": "2025-07-26", "link": "https://example.com/invoice/charlie-10" },
-      { "startDate": "2025-07-28", "endDate": "2025-07-31", "link": "https://example.com/invoice/charlie-10" },
-      { "startDate": "2025-08-01", "endDate": "2025-08-01", "link": "https://example.com/invoice/charlie-10" },
-      { "startDate": "2025-08-02", "endDate": "2025-08-02", "link": "https://example.com/invoice/charlie-10" }
-
-
+      {
+        "startDate": "2025-07-24",
+        "endDate": "2025-07-24",
+        "link": "backups\\Andres V\\WhatsApp Image 2025-08-10 at 9.41.28 PM.jpeg"
+      },
+      {
+        "startDate": "2025-07-25",
+        "endDate": "2025-07-25",
+        "link": "backups\\Andres V\\WhatsApp Image 2025-08-10 at 9.41.28 PM.jpeg"
+      },
+      {
+        "startDate": "2025-07-26",
+        "endDate": "2025-07-26",
+        "link": "backups\\Andres V\\WhatsApp Image 2025-08-10 at 9.41.28 PM.jpeg"
+      },
+      {
+        "startDate": "2025-07-28",
+        "endDate": "2025-07-31",
+        "link": "backups\\Andres V\\WhatsApp Image 2025-08-10 at 9.41.28 PM.jpeg"
+      },
+      {
+        "startDate": "2025-08-01",
+        "endDate": "2025-08-01",
+        "link": "backups\\Andres V\\WhatsApp Image 2025-08-11 at 6.35.08 PM.jpeg"
+      },
+      {
+        "startDate": "2025-08-02",
+        "endDate": "2025-08-02",
+        "link": "backups\\Andres V\\WhatsApp Image 2025-08-12 at 9.58.49 PM.jpeg"
+      },
+      {
+        "startDate": "2025-08-04",
+        "endDate": "2025-08-04",
+        "link": "backups\\Andres V\\WhatsApp Image 2025-08-13 at 7.35.26 PM.jpeg"
+      },
+      {
+        "startDate": "2025-08-05",
+        "endDate": "2025-08-05",
+        "link": "backups\\Andres V\\WhatsApp Image 2025-08-14 at 7.18.36 PM.jpeg"
+      },
+      {
+        "startDate": "2025-08-06",
+        "endDate": "2025-08-06",
+        "link": "backups\\Andres V\\WhatsApp Image 2025-08-17 at 8.11.52 AM.jpeg"
+      },
+      {
+        "startDate": "2025-08-07",
+        "endDate": "2025-08-07",
+        "link": "backups\\Andres V\\WhatsApp Image 2025-08-17 at 8.13.31 AM.jpeg"
+      },
+      {
+        "startDate": "2025-08-08",
+        "endDate": "2025-08-08",
+        "link": null
+      }
+    ],
+    "David B": [
+      {
+        "startDate": "2025-07-25",
+        "endDate": "2025-07-25",
+        "link": "backups/David B/WhatsApp Image 2025-08-13 at 8.13.56 PM.jpeg"
+      },
+      {
+        "startDate": "2025-07-26",
+        "endDate": "2025-07-26",
+        "link": "backups/David B/WhatsApp Image 2025-08-13 at 8.13.56 PM.jpeg"
+      },
+      {
+        "startDate": "2025-07-28",
+        "endDate": "2025-07-28",
+        "link": "backups/David B/WhatsApp Image 2025-08-17 at 8.09.57 AM.jpeg"
+      },
+      {
+        "startDate": "2025-07-29",
+        "endDate": "2025-07-31",
+        "link": "backups/David B/WhatsApp Image 2025-08-17 at 8.09.57 AM.jpeg"
+      },
+      {
+        "startDate": "2025-08-01",
+        "endDate": "2025-08-01",
+        "link": null
+      }
     ],
     "Genesis": [
-      { "startDate": "2025-06-29", "endDate": "2025-06-29", "link": "https://example.com/invoice/charlie-10" }
+      {
+        "startDate": "2025-06-29",
+        "endDate": "2025-06-29",
+        "link": "https://example.com/invoice/charlie-10"
+      }
     ]
   }
 }
