@@ -129,7 +129,7 @@ Modify the `createWhatsAppLink` method in `public/chart.js`.
 For development with auto-restart, you can use nodemon:
 ```bash
 npm install -g nodemon
-nodemon server.js
+nodemon server.jsc
 ```
 
 ## Troubleshooting
