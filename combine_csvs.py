@@ -12,7 +12,7 @@ import csv
 
 ROOT = os.path.dirname(__file__)
 BARBERS_DIR = os.path.join(ROOT, "barbers")
-OUT_FILE = os.path.join(ROOT, "combined.json")
+OUT_FILE = os.path.join(ROOT, "data.json")
 
 
 def name_from_filename(filename: str) -> str:
