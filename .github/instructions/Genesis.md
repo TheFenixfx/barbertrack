@@ -16,7 +16,7 @@ Step-by-step workflow:
 2. Extract from image:
    - Perform OCR on the image and extract: Amount, Date, Operación number.
    - Present the extracted values back to the user and ask them to confirm or correct each field.
-     Example prompt: "I found Amount: 5.883,20 Bs; Date: 30/08/2025; Operación: 003575688138. Is this correct? If not, please provide corrections."
+     Example prompt: "I found Amount: 5.883,20 Bs; Date: 30/08/2025; Operación: 003555688138. Is this correct? If not, please provide corrections."
 3. Ask for rate change:
    - Prompt: "Please provide the rate change (divisor) to convert the Amount. For example: 120000. If you want no conversion, enter 1."
 4. Compute converted amount:
@@ -32,14 +32,14 @@ Step-by-step workflow:
    - Populate a separate row per date. If the user indicates no link for a date, leave the link cell empty.
 6. Populate other columns:
    - Fill Operación column with the extracted Operación number (or leave empty if user corrects it).
-   - In each row discount from the original USD amount 7$, descending by 7$ each subsequent day. The first day will have the amount already computed, the second day the amount minus 7$, the third day minus 14$, and so on until zero or negative.
-7. Deliver output:
+   - In each row discount from the original USD amount 5$, descending by 5$ each subsequent day. The first day will have the amount already computed, the second day the amount minus 5$, the third day minus 10$, and so on until zero or negative.
+5. Deliver output:
    - Provide the updated CSV content and a short summary of changes (dates added, amounts converted, links populated).
    - Ask whether the user wants the updated CSV file returned as an attachment or saved to a specific location.
 
 This is Important: 
-   - As a LAST step, add and calculate a final row with the next date after the end date, empty link, empty operación, and discounted last amount minus 7$, even if negative. Example : 
-    next date, next date, empty link, empty operación, ( last amount - 7$ )
+   - As a LAST step, add and calculate a final row with the next date after the end date, empty link, empty operación, and discounted last amount minus 5$, even if negative. Example : 
+    next date, next date, empty link, empty operación, ( last amount - 5$ )
 
 
 Prompts to use when interacting with the user:

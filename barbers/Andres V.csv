@@ -1,15 +1,25 @@
-startDate,endDate,link
-2025-07-24,2025-07-24,backups\Andres V\WhatsApp Image 2025-08-10 at 9.41.28 PM.jpeg
-2025-07-25,2025-07-25,backups\Andres V\WhatsApp Image 2025-08-10 at 9.41.28 PM.jpeg
-2025-07-26,2025-07-26,backups\Andres V\WhatsApp Image 2025-08-10 at 9.41.28 PM.jpeg
-2025-07-28,2025-07-31,backups\Andres V\WhatsApp Image 2025-08-10 at 9.41.28 PM.jpeg
-2025-08-01,2025-08-01,backups\Andres V\WhatsApp Image 2025-08-11 at 6.35.08 PM.jpeg
-2025-08-02,2025-08-02,backups\Andres V\WhatsApp Image 2025-08-12 at 9.58.49 PM.jpeg
-2025-08-04,2025-08-04,backups\Andres V\WhatsApp Image 2025-08-13 at 7.35.26 PM.jpeg
-2025-08-05,2025-08-05,backups\Andres V\WhatsApp Image 2025-08-14 at 7.18.36 PM.jpeg
-2025-08-06,2025-08-06,backups\Andres V\WhatsApp Image 2025-08-17 at 8.11.52 AM.jpeg
-2025-08-07,2025-08-07,backups\Andres V\WhatsApp Image 2025-08-17 at 8.13.31 AM.jpeg
-2025-08-08,2025-08-08,backups\Andres V\WhatsApp Image 2025-08-22 at 4.23.25 PM.jpeg
-2025-08-09,2025-08-09,backups\Andres V\WhatsApp Image 2025-08-22 at 4.23.25 PM.jpeg
-2025-08-11,2025-08-11,backups\Andres V\WhatsApp Image 2025-08-22 at 4.23.25 PM.jpeg
-2025-08-12,2025-08-12
+startDate,endDate,link,Operation,Amount
+2025-07-24,2025-07-24,backups\Andres V\WhatsApp Image 2025-08-10 at 9.41.28 PM.jpeg,,
+2025-07-25,2025-07-25,backups\Andres V\WhatsApp Image 2025-08-10 at 9.41.28 PM.jpeg,,
+2025-07-26,2025-07-26,backups\Andres V\WhatsApp Image 2025-08-10 at 9.41.28 PM.jpeg,,
+2025-07-28,2025-07-31,backups\Andres V\WhatsApp Image 2025-08-10 at 9.41.28 PM.jpeg,,
+2025-08-01,2025-08-01,backups\Andres V\WhatsApp Image 2025-08-11 at 6.35.08 PM.jpeg,,
+2025-08-02,2025-08-02,backups\Andres V\WhatsApp Image 2025-08-12 at 9.58.49 PM.jpeg,,
+2025-08-04,2025-08-04,backups\Andres V\WhatsApp Image 2025-08-13 at 7.35.26 PM.jpeg,,
+2025-08-05,2025-08-05,backups\Andres V\WhatsApp Image 2025-08-14 at 7.18.36 PM.jpeg,,
+2025-08-06,2025-08-06,backups\Andres V\WhatsApp Image 2025-08-17 at 8.11.52 AM.jpeg,,
+2025-08-07,2025-08-07,backups\Andres V\WhatsApp Image 2025-08-17 at 8.13.31 AM.jpeg,,
+2025-08-08,2025-08-08,backups\Andres V\WhatsApp Image 2025-08-22 at 4.23.25 PM.jpeg,,
+2025-08-09,2025-08-09,backups\Andres V\WhatsApp Image 2025-08-22 at 4.23.25 PM.jpeg,,
+2025-08-11,2025-08-11,backups\Andres V\WhatsApp Image 2025-08-22 at 4.23.25 PM.jpeg,,
+2025-08-12,2025-08-12,backups\Andres V\WhatsApp Image 2025-08-31 at 1.11.39 AM.jpeg,003577518646,42
+2025-08-13,2025-08-13,backups\Andres V\WhatsApp Image 2025-08-31 at 1.11.39 AM.jpeg,003577518646,35
+2025-08-14,2025-08-14,backups\Andres V\WhatsApp Image 2025-08-31 at 1.11.39 AM.jpeg,003577518646,28
+2025-08-15,2025-08-15,backups\Andres V\WhatsApp Image 2025-08-31 at 1.11.39 AM.jpeg,003577518646,21
+2025-08-16,2025-08-16,backups\Andres V\WhatsApp Image 2025-08-31 at 1.11.39 AM.jpeg,003577518646,14
+2025-08-18,2025-08-18,backups\Andres V\WhatsApp Image 2025-08-31 at 1.11.39 AM.jpeg,003577518646,7
+2025-08-19,2025-08-19,backups\Andres V\ee193742-af3f-4b10-a97c-7af3f65d92bf.jpg,003599721727,7
+2025-08-20,2025-08-20,backups\Andres V\181c8fc5-3075-4942-8f81-fe6e7b151d1f.jpg,003630913281,21
+2025-08-21,2025-08-21,backups\Andres V\181c8fc5-3075-4942-8f81-fe6e7b151d1f.jpg,003630913281,14
+2025-08-22,2025-08-22,backups\Andres V\181c8fc5-3075-4942-8f81-fe6e7b151d1f.jpg,003630913281,7
+2025-08-23,2025-08-23,,,0

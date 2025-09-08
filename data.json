@@ -4,173 +4,547 @@
       {
         "startDate": "2025-07-28",
         "endDate": "2025-07-28",
-        "link": "backups/Alejandro/WhatsApp Image 2025-08-16 at 11.45.25 PM.jpeg"
+        "link": "backups/Alejandro/WhatsApp Image 2025-08-16 at 11.45.25 PM.jpeg",
+        "Operation": null,
+        "Amount": null
       },
       {
         "startDate": "2025-07-29",
         "endDate": "2025-07-29",
-        "link": "backups/Alejandro/WhatsApp Image 2025-08-16 at 11.45.25 PM (1).jpeg"
+        "link": "backups/Alejandro/WhatsApp Image 2025-08-16 at 11.45.25 PM (1).jpeg",
+        "Operation": null,
+        "Amount": null
       },
       {
         "startDate": "2025-07-30",
         "endDate": "2025-07-30",
-        "link": "backups/Alejandro/WhatsApp Image 2025-08-16 at 11.45.24 PM.jpeg"
+        "link": "backups/Alejandro/WhatsApp Image 2025-08-16 at 11.45.24 PM.jpeg",
+        "Operation": null,
+        "Amount": null
       },
       {
         "startDate": "2025-07-31",
         "endDate": "2025-07-31",
-        "link": "backups/Alejandro/WhatsApp Image 2025-08-16 at 11.45.24 PM.jpeg"
+        "link": "backups/Alejandro/WhatsApp Image 2025-08-16 at 11.45.24 PM.jpeg",
+        "Operation": null,
+        "Amount": null
       },
       {
         "startDate": "2025-08-01",
         "endDate": "2025-08-01",
-        "link": "backups/Alejandro/WhatsApp Image 2025-08-16 at 11.45.24 PM.jpeg"
+        "link": "backups/Alejandro/WhatsApp Image 2025-08-16 at 11.45.24 PM.jpeg",
+        "Operation": null,
+        "Amount": null
       },
       {
         "startDate": "2025-08-02",
         "endDate": "2025-08-02",
-        "link": "backups/Alejandro/WhatsApp Image 2025-08-16 at 11.45.24 PM.jpeg"
+        "link": "backups/Alejandro/WhatsApp Image 2025-08-16 at 11.45.24 PM.jpeg",
+        "Operation": null,
+        "Amount": null
       },
       {
         "startDate": "2025-08-04",
         "endDate": "2025-08-04",
-        "link": "backups/Alejandro/WhatsApp Image 2025-08-19 at 7.41.02 PM.jpeg"
+        "link": "backups/Alejandro/WhatsApp Image 2025-08-19 at 7.41.02 PM.jpeg",
+        "Operation": null,
+        "Amount": null
       },
       {
         "startDate": "2025-08-05",
         "endDate": "2025-08-05",
-        "link": "backups/Alejandro/WhatsApp Image 2025-08-19 at 7.41.02 PM.jpeg"
+        "link": "backups/Alejandro/WhatsApp Image 2025-08-19 at 7.41.02 PM.jpeg",
+        "Operation": null,
+        "Amount": null
       },
       {
         "startDate": "2025-08-06",
         "endDate": "2025-08-06",
-        "link": "backups\\Alejandro\\WhatsApp Image 2025-08-20 at 11.12.25 PM.jpeg"
+        "link": "backups\\Alejandro\\WhatsApp Image 2025-08-20 at 11.12.25 PM.jpeg",
+        "Operation": null,
+        "Amount": null
       },
       {
         "startDate": "2025-08-07",
         "endDate": "2025-08-07",
-        "link": null
+        "link": "backups/Alejandro/196d34ed-025d-479e-9b86-afe8556ba4df.jpg",
+        "Operation": "003506018399",
+        "Amount": "7"
+      },
+      {
+        "startDate": "2025-08-08",
+        "endDate": "2025-08-08",
+        "link": "backups/Alejandro/7b303fc7-8f93-4fcb-b2ba-b178c24f7e7e.jpg",
+        "Operation": "003522415179",
+        "Amount": "14"
+      },
+      {
+        "startDate": "2025-08-09",
+        "endDate": "2025-08-09",
+        "link": "backups/Alejandro/7b303fc7-8f93-4fcb-b2ba-b178c24f7e7e.jpg",
+        "Operation": "003522415179",
+        "Amount": "7"
+      },
+      {
+        "startDate": "2025-08-10",
+        "endDate": "2025-08-10",
+        "link": null,
+        "Operation": null,
+        "Amount": "0"
+      },
+      {
+        "startDate": "2025-08-11",
+        "endDate": "2025-08-11",
+        "link": "backups\\Alejandro\\dec771d0-b859-496e-ac29-78eaf833e121.jpg",
+        "Operation": "003543820635",
+        "Amount": "7"
+      },
+      {
+        "startDate": "2025-08-12",
+        "endDate": "2025-08-12",
+        "link": "backups\\Alejandro\\74fcc734-e2e6-427b-8cd3-8234fea4e2d3.jpg",
+        "Operation": "003550532581",
+        "Amount": "7"
+      },
+      {
+        "startDate": "2025-08-13",
+        "endDate": "2025-08-13",
+        "link": "backups\\Alejandro\\c1175b1d-0ebb-428e-b2b9-c3c0301024fb.jpg",
+        "Operation": "003557386445",
+        "Amount": "7"
+      },
+      {
+        "startDate": "2025-08-14",
+        "endDate": "2025-08-14",
+        "link": "backups\\Alejandro\\4a9491fc-3a6e-40ac-9974-dfd62e8fb827.jpg",
+        "Operation": "003566616789",
+        "Amount": "14"
+      },
+      {
+        "startDate": "2025-08-15",
+        "endDate": "2025-08-15",
+        "link": "backups\\Alejandro\\4a9491fc-3a6e-40ac-9974-dfd62e8fb827.jpg",
+        "Operation": "003566616789",
+        "Amount": "7"
+      },
+      {
+        "startDate": "2025-08-16",
+        "endDate": "2025-08-16",
+        "link": null,
+        "Operation": null,
+        "Amount": "0"
+      },
+      {
+        "startDate": "2025-08-18",
+        "endDate": "2025-08-18",
+        "link": "backups\\Alejandro\\3488baeb-d2a7-4fb3-b9d6-2e9c689222b0.jpg",
+        "Operation": "0677299422022",
+        "Amount": "14"
+      },
+      {
+        "startDate": "2025-08-19",
+        "endDate": "2025-08-19",
+        "link": "backups\\Alejandro\\3488baeb-d2a7-4fb3-b9d6-2e9c689222b0.jpg",
+        "Operation": "0677299422022",
+        "Amount": "7"
+      },
+      {
+        "startDate": "2025-08-20",
+        "endDate": "2025-08-20",
+        "link": "backups/Alejandro/3396c6ea-42c7-4e46-821a-3c6f5f025de6.jpg",
+        "Operation": "003613849653",
+        "Amount": "14"
+      },
+      {
+        "startDate": "2025-08-21",
+        "endDate": "2025-08-21",
+        "link": "backups/Alejandro/3396c6ea-42c7-4e46-821a-3c6f5f025de6.jpg",
+        "Operation": "003613849653",
+        "Amount": "7"
+      },
+      {
+        "startDate": "2025-08-22",
+        "endDate": "2025-08-22",
+        "link": "backups/Alejandro/81cbe764-cb62-4ae3-bf18-bd0742f46673.jpg",
+        "Operation": "003632943362",
+        "Amount": "21"
+      },
+      {
+        "startDate": "2025-08-23",
+        "endDate": "2025-08-23",
+        "link": "backups/Alejandro/81cbe764-cb62-4ae3-bf18-bd0742f46673.jpg",
+        "Operation": "003632943362",
+        "Amount": "14"
+      },
+      {
+        "startDate": "2025-08-25",
+        "endDate": "2025-08-25",
+        "link": "backups/Alejandro/81cbe764-cb62-4ae3-bf18-bd0742f46673.jpg",
+        "Operation": "003632943362",
+        "Amount": "7"
+      },
+      {
+        "startDate": "2025-08-26",
+        "endDate": "2025-08-26",
+        "link": null,
+        "Operation": null,
+        "Amount": "0"
       }
     ],
     "Andres V": [
       {
         "startDate": "2025-07-24",
         "endDate": "2025-07-24",
-        "link": "backups\\Andres V\\WhatsApp Image 2025-08-10 at 9.41.28 PM.jpeg"
+        "link": "backups\\Andres V\\WhatsApp Image 2025-08-10 at 9.41.28 PM.jpeg",
+        "Operation": null,
+        "Amount": null
       },
       {
         "startDate": "2025-07-25",
         "endDate": "2025-07-25",
-        "link": "backups\\Andres V\\WhatsApp Image 2025-08-10 at 9.41.28 PM.jpeg"
+        "link": "backups\\Andres V\\WhatsApp Image 2025-08-10 at 9.41.28 PM.jpeg",
+        "Operation": null,
+        "Amount": null
       },
       {
         "startDate": "2025-07-26",
         "endDate": "2025-07-26",
-        "link": "backups\\Andres V\\WhatsApp Image 2025-08-10 at 9.41.28 PM.jpeg"
+        "link": "backups\\Andres V\\WhatsApp Image 2025-08-10 at 9.41.28 PM.jpeg",
+        "Operation": null,
+        "Amount": null
       },
       {
         "startDate": "2025-07-28",
         "endDate": "2025-07-31",
-        "link": "backups\\Andres V\\WhatsApp Image 2025-08-10 at 9.41.28 PM.jpeg"
+        "link": "backups\\Andres V\\WhatsApp Image 2025-08-10 at 9.41.28 PM.jpeg",
+        "Operation": null,
+        "Amount": null
       },
       {
         "startDate": "2025-08-01",
         "endDate": "2025-08-01",
-        "link": "backups\\Andres V\\WhatsApp Image 2025-08-11 at 6.35.08 PM.jpeg"
+        "link": "backups\\Andres V\\WhatsApp Image 2025-08-11 at 6.35.08 PM.jpeg",
+        "Operation": null,
+        "Amount": null
       },
       {
         "startDate": "2025-08-02",
         "endDate": "2025-08-02",
-        "link": "backups\\Andres V\\WhatsApp Image 2025-08-12 at 9.58.49 PM.jpeg"
+        "link": "backups\\Andres V\\WhatsApp Image 2025-08-12 at 9.58.49 PM.jpeg",
+        "Operation": null,
+        "Amount": null
       },
       {
         "startDate": "2025-08-04",
         "endDate": "2025-08-04",
-        "link": "backups\\Andres V\\WhatsApp Image 2025-08-13 at 7.35.26 PM.jpeg"
+        "link": "backups\\Andres V\\WhatsApp Image 2025-08-13 at 7.35.26 PM.jpeg",
+        "Operation": null,
+        "Amount": null
       },
       {
         "startDate": "2025-08-05",
         "endDate": "2025-08-05",
-        "link": "backups\\Andres V\\WhatsApp Image 2025-08-14 at 7.18.36 PM.jpeg"
+        "link": "backups\\Andres V\\WhatsApp Image 2025-08-14 at 7.18.36 PM.jpeg",
+        "Operation": null,
+        "Amount": null
       },
       {
         "startDate": "2025-08-06",
         "endDate": "2025-08-06",
-        "link": "backups\\Andres V\\WhatsApp Image 2025-08-17 at 8.11.52 AM.jpeg"
+        "link": "backups\\Andres V\\WhatsApp Image 2025-08-17 at 8.11.52 AM.jpeg",
+        "Operation": null,
+        "Amount": null
       },
       {
         "startDate": "2025-08-07",
         "endDate": "2025-08-07",
-        "link": "backups\\Andres V\\WhatsApp Image 2025-08-17 at 8.13.31 AM.jpeg"
+        "link": "backups\\Andres V\\WhatsApp Image 2025-08-17 at 8.13.31 AM.jpeg",
+        "Operation": null,
+        "Amount": null
       },
       {
         "startDate": "2025-08-08",
         "endDate": "2025-08-08",
-        "link": "backups\\Andres V\\WhatsApp Image 2025-08-22 at 4.23.25 PM.jpeg"
+        "link": "backups\\Andres V\\WhatsApp Image 2025-08-22 at 4.23.25 PM.jpeg",
+        "Operation": null,
+        "Amount": null
       },
       {
         "startDate": "2025-08-09",
         "endDate": "2025-08-09",
-        "link": "backups\\Andres V\\WhatsApp Image 2025-08-22 at 4.23.25 PM.jpeg"
+        "link": "backups\\Andres V\\WhatsApp Image 2025-08-22 at 4.23.25 PM.jpeg",
+        "Operation": null,
+        "Amount": null
       },
       {
         "startDate": "2025-08-11",
         "endDate": "2025-08-11",
-        "link": "backups\\Andres V\\WhatsApp Image 2025-08-22 at 4.23.25 PM.jpeg"
+        "link": "backups\\Andres V\\WhatsApp Image 2025-08-22 at 4.23.25 PM.jpeg",
+        "Operation": null,
+        "Amount": null
       },
       {
         "startDate": "2025-08-12",
         "endDate": "2025-08-12",
-        "link": null
+        "link": "backups\\Andres V\\WhatsApp Image 2025-08-31 at 1.11.39 AM.jpeg",
+        "Operation": "003577518646",
+        "Amount": "42"
+      },
+      {
+        "startDate": "2025-08-13",
+        "endDate": "2025-08-13",
+        "link": "backups\\Andres V\\WhatsApp Image 2025-08-31 at 1.11.39 AM.jpeg",
+        "Operation": "003577518646",
+        "Amount": "35"
+      },
+      {
+        "startDate": "2025-08-14",
+        "endDate": "2025-08-14",
+        "link": "backups\\Andres V\\WhatsApp Image 2025-08-31 at 1.11.39 AM.jpeg",
+        "Operation": "003577518646",
+        "Amount": "28"
+      },
+      {
+        "startDate": "2025-08-15",
+        "endDate": "2025-08-15",
+        "link": "backups\\Andres V\\WhatsApp Image 2025-08-31 at 1.11.39 AM.jpeg",
+        "Operation": "003577518646",
+        "Amount": "21"
+      },
+      {
+        "startDate": "2025-08-16",
+        "endDate": "2025-08-16",
+        "link": "backups\\Andres V\\WhatsApp Image 2025-08-31 at 1.11.39 AM.jpeg",
+        "Operation": "003577518646",
+        "Amount": "14"
+      },
+      {
+        "startDate": "2025-08-18",
+        "endDate": "2025-08-18",
+        "link": "backups\\Andres V\\WhatsApp Image 2025-08-31 at 1.11.39 AM.jpeg",
+        "Operation": "003577518646",
+        "Amount": "7"
+      },
+      {
+        "startDate": "2025-08-19",
+        "endDate": "2025-08-19",
+        "link": "backups\\Andres V\\ee193742-af3f-4b10-a97c-7af3f65d92bf.jpg",
+        "Operation": "003599721727",
+        "Amount": "7"
+      },
+      {
+        "startDate": "2025-08-20",
+        "endDate": "2025-08-20",
+        "link": "backups\\Andres V\\181c8fc5-3075-4942-8f81-fe6e7b151d1f.jpg",
+        "Operation": "003630913281",
+        "Amount": "21"
+      },
+      {
+        "startDate": "2025-08-21",
+        "endDate": "2025-08-21",
+        "link": "backups\\Andres V\\181c8fc5-3075-4942-8f81-fe6e7b151d1f.jpg",
+        "Operation": "003630913281",
+        "Amount": "14"
+      },
+      {
+        "startDate": "2025-08-22",
+        "endDate": "2025-08-22",
+        "link": "backups\\Andres V\\181c8fc5-3075-4942-8f81-fe6e7b151d1f.jpg",
+        "Operation": "003630913281",
+        "Amount": "7"
+      },
+      {
+        "startDate": "2025-08-23",
+        "endDate": "2025-08-23",
+        "link": null,
+        "Operation": null,
+        "Amount": "0"
       }
     ],
     "David B": [
       {
         "startDate": "2025-07-25",
         "endDate": "2025-07-25",
-        "link": "backups/David B/WhatsApp Image 2025-08-13 at 8.13.56 PM.jpeg"
+        "link": "backups/David B/WhatsApp Image 2025-08-13 at 8.13.56 PM.jpeg",
+        "Operation": null,
+        "Amount": null
       },
       {
         "startDate": "2025-07-26",
         "endDate": "2025-07-26",
-        "link": "backups/David B/WhatsApp Image 2025-08-13 at 8.13.56 PM.jpeg"
+        "link": "backups/David B/WhatsApp Image 2025-08-13 at 8.13.56 PM.jpeg",
+        "Operation": null,
+        "Amount": null
       },
       {
         "startDate": "2025-07-28",
         "endDate": "2025-07-28",
-        "link": "backups/David B/WhatsApp Image 2025-08-17 at 8.09.57 AM.jpeg"
+        "link": "backups/David B/WhatsApp Image 2025-08-17 at 8.09.57 AM.jpeg",
+        "Operation": null,
+        "Amount": null
       },
       {
         "startDate": "2025-07-29",
         "endDate": "2025-07-31",
-        "link": "backups/David B/WhatsApp Image 2025-08-17 at 8.09.57 AM.jpeg"
+        "link": "backups/David B/WhatsApp Image 2025-08-17 at 8.09.57 AM.jpeg",
+        "Operation": null,
+        "Amount": null
       },
       {
         "startDate": "2025-08-01",
         "endDate": "2025-08-01",
-        "link": "backups/David B/WhatsApp Image 2025-08-23 at 9.06.21 AM.jpeg"
+        "link": "backups/David B/WhatsApp Image 2025-08-23 at 9.06.21 AM.jpeg",
+        "Operation": null,
+        "Amount": null
       },
       {
         "startDate": "2025-08-02",
         "endDate": "2025-08-02",
-        "link": "backups/David B/WhatsApp Image 2025-08-23 at 9.06.21 AM.jpeg"
+        "link": "backups/David B/WhatsApp Image 2025-08-23 at 9.06.21 AM.jpeg",
+        "Operation": null,
+        "Amount": null
       },
       {
         "startDate": "2025-08-04",
         "endDate": "2025-08-04",
-        "link": "backups/David B/WhatsApp Image 2025-08-23 at 9.06.21 AM.jpeg"
+        "link": "backups/David B/WhatsApp Image 2025-08-23 at 9.06.21 AM.jpeg",
+        "Operation": null,
+        "Amount": null
       },
       {
         "startDate": "2025-08-05",
         "endDate": "2025-08-05",
-        "link": null
+        "link": "backups/David B/WhatsApp Image 2025-08-30 at 7.54.21 PM.jpeg",
+        "Operation": "003575688138",
+        "Amount": "33"
+      },
+      {
+        "startDate": "2025-08-06",
+        "endDate": "2025-08-06",
+        "link": "backups/David B/WhatsApp Image 2025-08-30 at 7.54.21 PM.jpeg",
+        "Operation": "003575688138",
+        "Amount": "26"
+      },
+      {
+        "startDate": "2025-08-07",
+        "endDate": "2025-08-07",
+        "link": "backups/David B/WhatsApp Image 2025-08-30 at 7.54.21 PM.jpeg",
+        "Operation": "003575688138",
+        "Amount": "19"
+      },
+      {
+        "startDate": "2025-08-08",
+        "endDate": "2025-08-08",
+        "link": "backups/David B/WhatsApp Image 2025-08-30 at 7.54.21 PM.jpeg",
+        "Operation": "003575688138",
+        "Amount": "12"
+      },
+      {
+        "startDate": "2025-08-09",
+        "endDate": "2025-08-09",
+        "link": "backups/David B/WhatsApp Image 2025-08-30 at 7.54.21 PM.jpeg",
+        "Operation": "003575688138",
+        "Amount": "5"
+      },
+      {
+        "startDate": "2025-08-11",
+        "endDate": "2025-08-11",
+        "link": "backups/David B/WhatsApp Image 2025-08-30 at 7.54.21 PM.jpeg",
+        "Operation": "003575688138",
+        "Amount": "-2"
+      },
+      {
+        "startDate": "2025-08-12",
+        "endDate": "2025-08-12",
+        "link": null,
+        "Operation": null,
+        "Amount": "-2"
       }
     ],
     "Genesis": [
       {
-        "startDate": "2025-06-29",
-        "endDate": "2025-06-29",
-        "link": "https://example.com/invoice/charlie-10"
+        "startDate": "2025-07-29",
+        "endDate": "2025-07-29",
+        "link": "backups\\Genesis\\1fdd5a6e-e108-45f9-84eb-435b246b273d.jpg",
+        "Operation": "003433472838",
+        "Amount": "10"
+      },
+      {
+        "startDate": "2025-07-30",
+        "endDate": "2025-07-30",
+        "link": "backups\\Genesis\\1fdd5a6e-e108-45f9-84eb-435b246b273d.jpg",
+        "Operation": "003433472838",
+        "Amount": "5"
+      },
+      {
+        "startDate": "2025-07-31",
+        "endDate": "2025-07-31",
+        "link": "backups/Genesis/cc15fc84-a767-4d84-8a58-7f97e862ff15.jpg",
+        "Operation": "003450425610",
+        "Amount": "10"
+      },
+      {
+        "startDate": "2025-08-01",
+        "endDate": "2025-08-01",
+        "link": "backups/Genesis/cc15fc84-a767-4d84-8a58-7f97e862ff15.jpg",
+        "Operation": "003450425610",
+        "Amount": "5"
+      },
+      {
+        "startDate": "2025-08-02",
+        "endDate": "2025-08-02",
+        "link": "backups\\Genesis\\fb3c6695-bc3f-45a9-80b3-1b5e6e4bb2ba.jpg",
+        "Operation": "003550055775",
+        "Amount": "10"
+      },
+      {
+        "startDate": "2025-08-03",
+        "endDate": "2025-08-03",
+        "link": null,
+        "Operation": null,
+        "Amount": null
+      },
+      {
+        "startDate": "2025-08-04",
+        "endDate": "2025-08-04",
+        "link": "backups\\Genesis\\fb3c6695-bc3f-45a9-80b3-1b5e6e4bb2ba.jpg",
+        "Operation": "003550055775",
+        "Amount": "5"
+      },
+      {
+        "startDate": "2025-08-05",
+        "endDate": "2025-08-05",
+        "link": "backups\\Genesis\\99caea4f-5c53-48ca-a2d6-58cfe4582123.jpg",
+        "Operation": "003557346796",
+        "Amount": "10"
+      },
+      {
+        "startDate": "2025-08-06",
+        "endDate": "2025-08-06",
+        "link": "backups\\Genesis\\99caea4f-5c53-48ca-a2d6-58cfe4582123.jpg",
+        "Operation": "003557346796",
+        "Amount": "5"
+      },
+      {
+        "startDate": "2025-08-07",
+        "endDate": "2025-08-07",
+        "link": "backups\\Genesis\\01bbc576-1b1d-40f7-9ca4-990dc2824db9.jpg",
+        "Operation": "003613274363",
+        "Amount": "10"
+      },
+      {
+        "startDate": "2025-08-08",
+        "endDate": "2025-08-08",
+        "link": "backups\\Genesis\\01bbc576-1b1d-40f7-9ca4-990dc2824db9.jpg",
+        "Operation": "003613274363",
+        "Amount": "5"
+      },
+      {
+        "startDate": "2025-08-09",
+        "endDate": "2025-08-09",
+        "link": null,
+        "Operation": null,
+        "Amount": "0"
       }
     ]
   }

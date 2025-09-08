@@ -1,9 +1,15 @@
-startDate,endDate,link
-2025-07-25,2025-07-25,backups/David B/WhatsApp Image 2025-08-13 at 8.13.56 PM.jpeg
-2025-07-26,2025-07-26,backups/David B/WhatsApp Image 2025-08-13 at 8.13.56 PM.jpeg
-2025-07-28,2025-07-28,backups/David B/WhatsApp Image 2025-08-17 at 8.09.57 AM.jpeg
-2025-07-29,2025-07-31,backups/David B/WhatsApp Image 2025-08-17 at 8.09.57 AM.jpeg
-2025-08-01,2025-08-01,backups/David B/WhatsApp Image 2025-08-23 at 9.06.21 AM.jpeg
-2025-08-02,2025-08-02,backups/David B/WhatsApp Image 2025-08-23 at 9.06.21 AM.jpeg
-2025-08-04,2025-08-04,backups/David B/WhatsApp Image 2025-08-23 at 9.06.21 AM.jpeg
-2025-08-05,2025-08-05,
+startDate,endDate,link,Operation,Amount
+2025-07-25,2025-07-25,backups/David B/WhatsApp Image 2025-08-13 at 8.13.56 PM.jpeg,,
+2025-07-26,2025-07-26,backups/David B/WhatsApp Image 2025-08-13 at 8.13.56 PM.jpeg,,
+2025-07-28,2025-07-28,backups/David B/WhatsApp Image 2025-08-17 at 8.09.57 AM.jpeg,,
+2025-07-29,2025-07-31,backups/David B/WhatsApp Image 2025-08-17 at 8.09.57 AM.jpeg,,
+2025-08-01,2025-08-01,backups/David B/WhatsApp Image 2025-08-23 at 9.06.21 AM.jpeg,,
+2025-08-02,2025-08-02,backups/David B/WhatsApp Image 2025-08-23 at 9.06.21 AM.jpeg,,
+2025-08-04,2025-08-04,backups/David B/WhatsApp Image 2025-08-23 at 9.06.21 AM.jpeg,,
+2025-08-05,2025-08-05,backups/David B/WhatsApp Image 2025-08-30 at 7.54.21 PM.jpeg,003575688138,33
+2025-08-06,2025-08-06,backups/David B/WhatsApp Image 2025-08-30 at 7.54.21 PM.jpeg,003575688138,26
+2025-08-07,2025-08-07,backups/David B/WhatsApp Image 2025-08-30 at 7.54.21 PM.jpeg,003575688138,19
+2025-08-08,2025-08-08,backups/David B/WhatsApp Image 2025-08-30 at 7.54.21 PM.jpeg,003575688138,12
+2025-08-09,2025-08-09,backups/David B/WhatsApp Image 2025-08-30 at 7.54.21 PM.jpeg,003575688138,5
+2025-08-11,2025-08-11,backups/David B/WhatsApp Image 2025-08-30 at 7.54.21 PM.jpeg,003575688138,-2
+2025-08-12,2025-08-12,,,-2
