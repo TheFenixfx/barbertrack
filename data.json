@@ -86,13 +86,6 @@
         "Amount": "7"
       },
       {
-        "startDate": "2025-08-10",
-        "endDate": "2025-08-10",
-        "link": null,
-        "Operation": null,
-        "Amount": "0"
-      },
-      {
         "startDate": "2025-08-11",
         "endDate": "2025-08-11",
         "link": "backups\\Alejandro\\dec771d0-b859-496e-ac29-78eaf833e121.jpg",
@@ -130,9 +123,9 @@
       {
         "startDate": "2025-08-16",
         "endDate": "2025-08-16",
-        "link": null,
-        "Operation": null,
-        "Amount": "0"
+        "link": "backups/Alejandro/81cbe764-cb62-4ae3-bf18-bd0742f46673.jpg",
+        "Operation": "003632943362",
+        "Amount": "7"
       },
       {
         "startDate": "2025-08-18",
@@ -179,13 +172,6 @@
       {
         "startDate": "2025-08-25",
         "endDate": "2025-08-25",
-        "link": "backups/Alejandro/81cbe764-cb62-4ae3-bf18-bd0742f46673.jpg",
-        "Operation": "003632943362",
-        "Amount": "7"
-      },
-      {
-        "startDate": "2025-08-26",
-        "endDate": "2025-08-26",
         "link": null,
         "Operation": null,
         "Amount": "0"
@@ -496,13 +482,6 @@
         "link": "backups\\Genesis\\fb3c6695-bc3f-45a9-80b3-1b5e6e4bb2ba.jpg",
         "Operation": "003550055775",
         "Amount": "10"
-      },
-      {
-        "startDate": "2025-08-03",
-        "endDate": "2025-08-03",
-        "link": null,
-        "Operation": null,
-        "Amount": null
       },
       {
         "startDate": "2025-08-04",
