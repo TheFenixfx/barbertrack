@@ -172,6 +172,48 @@
       {
         "startDate": "2025-08-25",
         "endDate": "2025-08-25",
+        "link": "backups/Alejandro/003679516666.jpg",
+        "Operation": "003679516666",
+        "Amount": "42"
+      },
+      {
+        "startDate": "2025-08-26",
+        "endDate": "2025-08-26",
+        "link": "backups/Alejandro/003679516666.jpg",
+        "Operation": "003679516666",
+        "Amount": "35"
+      },
+      {
+        "startDate": "2025-08-27",
+        "endDate": "2025-08-27",
+        "link": "backups/Alejandro/003679516666.jpg",
+        "Operation": "003679516666",
+        "Amount": "28"
+      },
+      {
+        "startDate": "2025-08-28",
+        "endDate": "2025-08-28",
+        "link": "backups/Alejandro/003679516666.jpg",
+        "Operation": "003679516666",
+        "Amount": "21"
+      },
+      {
+        "startDate": "2025-08-29",
+        "endDate": "2025-08-29",
+        "link": "backups/Alejandro/003679516666.jpg",
+        "Operation": "003679516666",
+        "Amount": "14"
+      },
+      {
+        "startDate": "2025-08-30",
+        "endDate": "2025-08-30",
+        "link": "backups/Alejandro/003679516666.jpg",
+        "Operation": "003679516666",
+        "Amount": "7"
+      },
+      {
+        "startDate": "2025-08-31",
+        "endDate": "2025-08-31",
         "link": null,
         "Operation": null,
         "Amount": "0"
@@ -442,9 +484,37 @@
       {
         "startDate": "2025-08-12",
         "endDate": "2025-08-12",
+        "link": "backups/David B/003675919249.jpg",
+        "Operation": "003675919249",
+        "Amount": "12"
+      },
+      {
+        "startDate": "2025-08-13",
+        "endDate": "2025-08-13",
+        "link": "backups/David B/003675919249.jpg",
+        "Operation": "003675919249",
+        "Amount": "5"
+      },
+      {
+        "startDate": "2025-08-14",
+        "endDate": "2025-08-14",
+        "link": "backups/David B/003644103738.jpg",
+        "Operation": "003644103738",
+        "Amount": "7"
+      },
+      {
+        "startDate": "2025-08-15",
+        "endDate": "2025-08-15",
+        "link": "backups/David B/003663886546.jpg",
+        "Operation": "003663886546",
+        "Amount": "6"
+      },
+      {
+        "startDate": "2025-08-16",
+        "endDate": "2025-08-16",
         "link": null,
         "Operation": null,
-        "Amount": "-2"
+        "Amount": " -3"
       }
     ],
     "Genesis": [
@@ -519,8 +589,78 @@
         "Amount": "5"
       },
       {
-        "startDate": "2025-08-09",
-        "endDate": "2025-08-09",
+        "startDate": "2025-08-11",
+        "endDate": "2025-08-11",
+        "link": "backups\\Genesis\\003656639714.jpg",
+        "Operation": "003656639714",
+        "Amount": "10"
+      },
+      {
+        "startDate": "2025-08-12",
+        "endDate": "2025-08-12",
+        "link": "backups\\Genesis\\003656639714.jpg",
+        "Operation": "003656639714",
+        "Amount": "5"
+      },
+      {
+        "startDate": "2025-08-13",
+        "endDate": "2025-08-13",
+        "link": "backups\\Genesis\\003641899502.jpg",
+        "Operation": "003641899502",
+        "Amount": "10"
+      },
+      {
+        "startDate": "2025-08-14",
+        "endDate": "2025-08-14",
+        "link": "backups\\Genesis\\003641899502.jpg",
+        "Operation": "003641899502",
+        "Amount": "5"
+      },
+      {
+        "startDate": "2025-08-15",
+        "endDate": "2025-08-15",
+        "link": "mama.jpg",
+        "Operation": "000000000000",
+        "Amount": "20"
+      },
+      {
+        "startDate": "2025-08-16",
+        "endDate": "2025-08-16",
+        "link": "mama.jpg",
+        "Operation": "000000000000",
+        "Amount": "15"
+      },
+      {
+        "startDate": "2025-08-18",
+        "endDate": "2025-08-18",
+        "link": "mama.jpg",
+        "Operation": "000000000000",
+        "Amount": "10"
+      },
+      {
+        "startDate": "2025-08-19",
+        "endDate": "2025-08-19",
+        "link": "mama.jpg",
+        "Operation": "000000000000",
+        "Amount": "5"
+      },
+      {
+        "startDate": "2025-08-20",
+        "endDate": "2025-08-20",
+        "link": "mama.jpg",
+        "Operation": "000000000000",
+        "Amount": "10"
+      },
+      {
+        "startDate": "2025-08-21",
+        "endDate": "2025-08-21",
+        "link": "mama.jpg",
+        "Operation": "000000000000",
+        "Amount": "5"
+      },
+      {
+        "startDate": "2025-08-22",
+        "endDate": "2025-08-22",
         "link": null,
         "Operation": null,
         "Amount": "0"
