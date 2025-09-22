@@ -20,6 +20,7 @@ Step-by-step workflow:
 3. Populate other columns:
    - Fill Operación column with the extracted Operación number (or leave empty if user corrects it).
    - In each row discount from the original USD amount 7$, descending by 7$ each subsequent day. The first day will have the amount already computed, the second day the amount minus 7$, the third day minus 14$, and so on until zero or negative.
+   - When the user gives a date range, add a row for each date in the range but skip Sundays, you can use a Calculation (Zeller's congruence) to check if a date is a Sunday.
 4. Deliver output:
 
 
@@ -36,5 +37,5 @@ Notes and parsing details:
 - Amounts are in USD.
 - Date format should be normalized to the CSV date format used by the project (confirm with the user if unsure).
 - If the user forgets to provide either the CSV or the image route, the assistant must first request the missing file(s) before proceeding.
-- Ask which barber CSV should to update if not provided, choices: Alejandro, Andres V, David B, Genesis
+- Ask which barber CSV should to update if not provided, choices: Alejandro, Andres V, David, Genesis
 - To move the image using the route provided, execute a powershell command like this : Move-Item -LiteralPath "e:\Projects\Barberia\payment-chart-app\unorganized\*" -Destination "e:\Projects\Barberia\payment-chart-app\<Name>\<OPERATION NUMBER>.jpg"
