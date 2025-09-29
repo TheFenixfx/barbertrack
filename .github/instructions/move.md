@@ -1,0 +1,3 @@
+- Extract OPERATION NUMBER from the provided image route
+- Move the image using the route provided, execute a powershell command like this : Move-Item -LiteralPath "e:\Projects\Barberia\payment-chart-app\unorganized\*" -Destination "e:\Projects\Barberia\payment-chart-app\backups\<Name>\<OPERATION NUMBER>.jpg"
+-The user is providing the route to move the image and a name related to the folder the image will be moved to.  "unorganized\181c8fc5-3075-4942-8f81-fe6e7b151d1f.jpg" , Andres
