@@ -15,7 +15,7 @@ Step-by-step workflow:
 2. Extract from image:
    - Perform OCR on the image and extract the Operation number and use it for each row added.
    - Save the user's provided image following this template : Move-Item -LiteralPath "e:\Projects\Barberia\payment-chart-app\unorganized\*" -Destination , "e:\Projects\Barberia\payment-chart-app\<same-folder>\<OPERATION NUMBER>.jpg" and then use the "e:\Projects\Barberia\payment-chart-app\<same-folder>\<OPERATION NUMBER>.jpg" string in the CSV link column.
-   - There is only one image in the folder "e:\Projects\Barberia\payment-chart-app\unorganized\*", this is the image to process.
+   - Use the only image in "e:\Projects\Barberia\payment-chart-app\unorganized\*"
    - Use the Destination path to add it to the link column for each date.
 3. Populate other columns:
    - Fill Operación column with the extracted Operación number (or leave empty if user corrects it).
@@ -39,3 +39,4 @@ Notes and parsing details:
 - If the user forgets to provide either the CSV or the image route, the assistant must first request the missing file(s) before proceeding.
 - Ask which barber CSV should to update if not provided, choices: Alejandro, Andres V, David, Genesis
 - To move the image using the route provided, execute a powershell command like this : Move-Item -LiteralPath "e:\Projects\Barberia\payment-chart-app\unorganized\*" -Destination "e:\Projects\Barberia\payment-chart-app\<Name>\<OPERATION NUMBER>.jpg"
+- Ensure the image is moved
