@@ -27,6 +27,25 @@ header h1 {
     margin-bottom: 10px;
 }
 
+.debt-button {
+    margin: 10px auto 20px auto;
+    padding: 10px 20px;
+    background-color: #2980b9;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+}
+
+.debt-button:hover,
+.debt-button:focus {
+    background-color: #1f618d;
+    outline: none;
+}
+
 header p {
     color: #7f8c8d;
     font-size: 1.1em;
@@ -201,6 +220,95 @@ header p {
     background: #555;
 }
 
+.modal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    position: relative;
+    background: white;
+    border-radius: 10px;
+    padding: 30px;
+    width: min(500px, 90%);
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    z-index: 1001;
+}
+
+.modal-content h2 {
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+.modal-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    line-height: 1;
+    color: #7f8c8d;
+}
+
+.modal-close:hover,
+.modal-close:focus {
+    color: #2c3e50;
+    outline: none;
+}
+
+.debt-list {
+    list-style: none;
+}
+
+.debt-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 12px 0;
+    border-bottom: 1px solid #ecf0f1;
+}
+
+.debt-list li:last-child {
+    border-bottom: none;
+}
+
+.debt-name {
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.debt-amount {
+    color: #c0392b;
+    font-weight: 600;
+    margin-left: 10px;
+    min-width: 90px;
+    text-align: right;
+}
+
+.debt-days {
+    color: #7f8c8d;
+    font-size: 0.95em;
+    margin-left: 10px;
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
     .container {
@@ -219,4 +327,8 @@ header p {
         font-size: 10px;
         width: 60px;
     }
+}
+
+#debtModalSubtitle {
+    text-align: center;
 }

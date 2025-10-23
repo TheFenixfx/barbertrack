@@ -1,8 +1,10 @@
 class PaymentChart {
     constructor() {
         this.data = null;
+        this.debtData = null;
         this.pixelsPerDay = 40; // Height of each day in pixels
         this.dateRange = { start: null, end: null };
+        this.modalKeyHandler = null;
         this.init();
     }
 
@@ -12,6 +14,7 @@ class PaymentChart {
             this.calculateDateRange();
             this.renderChart();
             this.hideLoading();
+            this.setupDebtModal();
         } catch (error) {
             this.showError();
             console.error('Error initializing chart:', error);
@@ -280,6 +283,103 @@ class PaymentChart {
     showError() {
         document.getElementById('loading').style.display = 'none';
         document.getElementById('error').style.display = 'block';
+    }
+
+    async fetchDebtData() {
+        const response = await fetch('/api/debts');
+        if (!response.ok) {
+            throw new Error('Failed to fetch debt data');
+        }
+        const payload = await response.json();
+        return payload.debts || [];
+    }
+
+    formatCurrency(amount) {
+        return new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            minimumFractionDigits: 2
+        }).format(amount);
+    }
+
+    setupDebtModal() {
+        const button = document.getElementById('debtSummaryButton');
+        const modal = document.getElementById('debtModal');
+        const modalBody = document.getElementById('debtModalBody');
+        const closeTargets = modal.querySelectorAll('[data-modal-close]');
+
+        if (!button || !modal || !modalBody) {
+            return;
+        }
+
+        const openModal = () => {
+            modal.classList.add('active');
+            modal.setAttribute('aria-hidden', 'false');
+
+            this.modalKeyHandler = (event) => {
+                if (event.key === 'Escape') {
+                    closeModal();
+                }
+            };
+
+            document.addEventListener('keydown', this.modalKeyHandler);
+        };
+
+        const closeModal = () => {
+            modal.classList.remove('active');
+            modal.setAttribute('aria-hidden', 'true');
+
+            if (this.modalKeyHandler) {
+                document.removeEventListener('keydown', this.modalKeyHandler);
+                this.modalKeyHandler = null;
+            }
+        };
+
+        const renderModalContent = (debts) => {
+            if (!debts.length) {
+                modalBody.innerHTML = '<p>No hay datos de deudas disponibles.</p>';
+                return;
+            }
+
+            const listItems = debts
+                .map((debt) => {
+                    const amount = this.formatCurrency(debt.amount);
+                    return `
+                        <li>
+                            <span class="debt-name">${debt.name}</span>
+                            <span class="debt-amount">${amount}</span>
+                            <span class="debt-days">${debt.days} días</span>
+                        </li>
+                    `;
+                })
+                .join('');
+
+            modalBody.innerHTML = `
+                <ul class="debt-list">
+                    ${listItems}
+                </ul>
+            `;
+        };
+
+        button.addEventListener('click', async () => {
+            try {
+                if (!this.debtData) {
+                    modalBody.innerHTML = '<p>Cargando deudas...</p>';
+                    this.debtData = await this.fetchDebtData();
+                }
+
+                renderModalContent(this.debtData);
+                openModal();
+            } catch (error) {
+                console.error('Error loading debt data:', error);
+                modalBody.innerHTML = '<p>Error al cargar las deudas. Inténtalo nuevamente.</p>';
+                openModal();
+            }
+        });
+
+        closeTargets.forEach((target) => {
+            target.addEventListener('click', closeModal);
+        });
     }
 }
 

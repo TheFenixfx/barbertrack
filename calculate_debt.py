@@ -205,8 +205,11 @@ def process_barber_file(file_path, output_directory):
         current_date = datetime.now()
         days_passed = count_excluding_sundays(latest_date, current_date)
 
+        # Determine daily rate (Genesis discounts $5 per day)
+        daily_rate = 5.0 if barber_name == "Genesis" else 7.0
+
         # Calculate debt
-        debt_amount = calculate_debt(days_passed)
+        debt_amount = calculate_debt(days_passed, daily_rate)
 
         # Write debt report
         write_debt_csv(barber_name, days_passed, debt_amount, output_directory)
