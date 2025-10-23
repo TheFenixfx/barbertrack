@@ -9,6 +9,7 @@ A full-stack web application that displays payment status charts with clickable 
 - **Scrollable Timeline**: Y-axis timeline with date labels in dd/mm/yy format
 - **Responsive Design**: Works on desktop and mobile devices
 - **Real-time Data**: Reads from data.json file for easy manual updates
+- **Debt Calculation**: Python script to calculate debt from last payment date (excluding Sundays)
 
 ## Project Structure
 
@@ -16,7 +17,14 @@ A full-stack web application that displays payment status charts with clickable 
 payment-chart-app/
 ├── package.json          # Node.js dependencies and scripts
 ├── server.js            # Express server with API endpoint
+├── calculate_debt.py    # Python debt calculation script
 ├── data.json            # Payment data (manually editable)
+├── barbers/             # Barber CSV files
+│   ├── Alejandro.csv    # Individual barber payment data
+│   ├── David.csv        # Individual barber payment data
+│   ├── Andres.csv       # Individual barber payment data
+│   ├── Genesis.csv      # Individual barber payment data
+│   └── *_debt.csv       # Generated debt reports
 ├── public/
 │   ├── index.html       # Main HTML file
 │   ├── styles.css       # CSS styling
@@ -132,12 +140,70 @@ npm install -g nodemon
 nodemon server.jsc
 ```
 
+## Debt Calculator
+
+The project includes a Python script (`calculate_debt.py`) that calculates debt from the last payment date for each barber.
+
+### Features
+- **Automatic Date Processing**: Reads barber CSV files and finds the latest payment date
+- **Sunday Exclusion**: Excludes Sundays from day count calculation (barbers don't work on Sundays)
+- **$7/Day Rate**: Calculates debt at $7 per working day
+- **Batch Processing**: Processes all barber CSV files in a directory
+- **CSV Output**: Generates `[barber_name]_debt.csv` files with calculated results
+
+### Usage
+
+```bash
+# Process all barber CSV files in default 'barbers' directory
+python calculate_debt.py
+
+# Process files in a specific directory
+python calculate_debt.py /path/to/csv/files
+
+# Show help information
+python calculate_debt.py --help
+```
+
+### Input Format
+The script expects CSV files with this structure:
+```csv
+startDate,endDate,link,Operation,Amount
+2025-07-28,2025-07-28,backup_link,,amount
+```
+
+### Output Format
+The script generates CSV files named `[barber_name]_debt.csv`:
+```csv
+days_passed,debt_amount
+20,140.00
+```
+
+### Example Output
+```
+Found 4 barber CSV files to process...
+--------------------------------------------------
+Created debt report: barbers\Alejandro_debt.csv
++ Alejandro: 20 days, $140.00 debt
+Created debt report: barbers\Andres_debt.csv
++ Andres: 26 days, $182.00 debt
+Created debt report: barbers\David_debt.csv
++ David: 36 days, $252.00 debt
+Created debt report: barbers\Genesis_debt.csv
++ Genesis: 33 days, $231.00 debt
+--------------------------------------------------
+Processing complete: 4/4 files processed successfully
+```
+
 ## Troubleshooting
 
 1. **Port Already in Use**: Change the PORT in server.js or set environment variable
 2. **Data Not Loading**: Check that data.json is valid JSON format
 3. **WhatsApp Links Not Working**: Ensure the device has WhatsApp installed
 4. **Styling Issues**: Clear browser cache and refresh
+5. **Python Script Issues**:
+   - Ensure Python 3.6+ is installed
+   - Check that CSV files have the correct format with `endDate` column
+   - Verify directory permissions for reading input and writing output files
 
 ## License
 
