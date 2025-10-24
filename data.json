@@ -361,9 +361,71 @@
       {
         "startDate": "2025-09-25",
         "endDate": "2025-09-25",
+        "link": "backups/Alejandro/003996295343.jpg",
+        "Operation": "003996295343",
+        "Amount": "42"
+      },
+      {
+        "startDate": "2025-09-26",
+        "endDate": "2025-09-26",
+        "link": "backups/Alejandro/003996295343.jpg",
+        "Operation": "003996295343",
+        "Amount": "35"
+      },
+      {
+        "startDate": "2025-09-27",
+        "endDate": "2025-09-27",
+        "link": "backups/Alejandro/003996295343.jpg",
+        "Operation": "003996295343",
+        "Amount": "28"
+      },
+      {
+        "startDate": "2025-09-29",
+        "endDate": "2025-09-29",
+        "link": "backups/Alejandro/003996295343.jpg",
+        "Operation": "003996295343",
+        "Amount": "21"
+      },
+      {
+        "startDate": "2025-09-30",
+        "endDate": "2025-09-30",
+        "link": "backups/Alejandro/003996295343.jpg",
+        "Operation": "003996295343",
+        "Amount": "14"
+      },
+      {
+        "startDate": "2025-10-01",
+        "endDate": "2025-10-01",
+        "link": "backups/Alejandro/003996295343.jpg",
+        "Operation": "003996295343",
+        "Amount": "7"
+      },
+      {
+        "startDate": "2025-10-02",
+        "endDate": "2025-10-02",
+        "link": "froilan.jpg",
+        "Operation": "0000000",
+        "Amount": "7"
+      },
+      {
+        "startDate": "2025-10-03",
+        "endDate": "2025-10-03",
+        "link": "corte.jpg",
+        "Operation": "0000000",
+        "Amount": "7"
+      },
+      {
+        "startDate": "2025-10-04",
+        "endDate": "2025-10-04",
         "link": null,
-        "Operation": " ",
+        "Operation": null,
         "Amount": "0"
+      }
+    ],
+    "Alejandro debt": [
+      {
+        "days_passed": "16",
+        "debt_amount": "112.00"
       }
     ],
     "Andres": [
@@ -690,6 +752,12 @@
         "Amount": "0"
       }
     ],
+    "Andres debt": [
+      {
+        "days_passed": "30",
+        "debt_amount": "210.00"
+      }
+    ],
     "David": [
       {
         "startDate": "2025-07-25",
@@ -939,9 +1007,64 @@
       {
         "startDate": "2025-09-06",
         "endDate": "2025-09-06",
+        "link": "backups/David/003874640760.jpg",
+        "Operation": "003874640760",
+        "Amount": "20"
+      },
+      {
+        "startDate": "2025-09-08",
+        "endDate": "2025-09-08",
+        "link": "backups/David/003874640760.jpg",
+        "Operation": "003874640760",
+        "Amount": "13"
+      },
+      {
+        "startDate": "2025-09-09",
+        "endDate": "2025-09-09",
+        "link": "backups/David/003874640760.jpg",
+        "Operation": "003874640760",
+        "Amount": "6"
+      },
+      {
+        "startDate": "2025-09-10",
+        "endDate": "2025-09-10",
+        "link": "backups/David/003994180430.jpg",
+        "Operation": "003994180430",
+        "Amount": "28"
+      },
+      {
+        "startDate": "2025-09-11",
+        "endDate": "2025-09-11",
+        "link": "backups/David/003994180430.jpg",
+        "Operation": "003994180430",
+        "Amount": "21"
+      },
+      {
+        "startDate": "2025-09-12",
+        "endDate": "2025-09-12",
+        "link": "backups/David/003994180430.jpg",
+        "Operation": "003994180430",
+        "Amount": "14"
+      },
+      {
+        "startDate": "2025-09-13",
+        "endDate": "2025-09-13",
+        "link": "backups/David/003994180430.jpg",
+        "Operation": "003994180430",
+        "Amount": "7"
+      },
+      {
+        "startDate": "2025-09-14",
+        "endDate": "2025-09-14",
         "link": null,
-        "Operation": " ",
-        "Amount": "0"
+        "Operation": null,
+        "Amount": "-1"
+      }
+    ],
+    "David debt": [
+      {
+        "days_passed": "34",
+        "debt_amount": "238.00"
       }
     ],
     "Genesis": [
@@ -1200,9 +1323,29 @@
       {
         "startDate": "2025-09-10",
         "endDate": "2025-09-10",
+        "link": "e:\\Projects\\Barberia\\payment-chart-app\\Genesis\\004008221724.jpg",
+        "Operation": "004008221724",
+        "Amount": "10"
+      },
+      {
+        "startDate": "2025-09-11",
+        "endDate": "2025-09-11",
+        "link": "e:\\Projects\\Barberia\\payment-chart-app\\Genesis\\004008221724.jpg",
+        "Operation": "004008221724",
+        "Amount": "5"
+      },
+      {
+        "startDate": "2025-09-12",
+        "endDate": "2025-09-12",
         "link": null,
         "Operation": null,
         "Amount": "0"
+      }
+    ],
+    "Genesis debt": [
+      {
+        "days_passed": "35",
+        "debt_amount": "175.00"
       }
     ]
   }
