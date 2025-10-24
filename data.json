@@ -404,14 +404,14 @@
         "startDate": "2025-10-02",
         "endDate": "2025-10-02",
         "link": "froilan.jpg",
-        "Operation": "0000000",
+        "Operation": "000000000000",
         "Amount": "7"
       },
       {
         "startDate": "2025-10-03",
         "endDate": "2025-10-03",
         "link": "corte.jpg",
-        "Operation": "0000000",
+        "Operation": "000000000000",
         "Amount": "7"
       },
       {
@@ -420,12 +420,6 @@
         "link": null,
         "Operation": null,
         "Amount": "0"
-      }
-    ],
-    "Alejandro debt": [
-      {
-        "days_passed": "16",
-        "debt_amount": "112.00"
       }
     ],
     "Andres": [
@@ -752,12 +746,6 @@
         "Amount": "0"
       }
     ],
-    "Andres debt": [
-      {
-        "days_passed": "30",
-        "debt_amount": "210.00"
-      }
-    ],
     "David": [
       {
         "startDate": "2025-07-25",
@@ -1061,12 +1049,6 @@
         "Amount": "-1"
       }
     ],
-    "David debt": [
-      {
-        "days_passed": "34",
-        "debt_amount": "238.00"
-      }
-    ],
     "Genesis": [
       {
         "startDate": "2025-07-29",
@@ -1340,12 +1322,6 @@
         "link": null,
         "Operation": null,
         "Amount": "0"
-      }
-    ],
-    "Genesis debt": [
-      {
-        "days_passed": "35",
-        "debt_amount": "175.00"
       }
     ]
   }

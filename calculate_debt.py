@@ -4,7 +4,7 @@ Barber Debt Calculator
 
 This script processes barber CSV files to calculate debt from the last payment date.
 It counts days from the last payment to current date, excluding Sundays, and calculates
-debt at $7 per day.
+debt at $7 per day, storing the generated debt reports under a dedicated `debts` folder.
 
 Usage:
     python calculate_debt.py [directory]
@@ -14,7 +14,6 @@ If no directory is provided, it defaults to the 'barbers' directory.
 
 import argparse
 import csv
-import os
 import sys
 from datetime import datetime, timedelta
 from pathlib import Path
@@ -150,8 +149,10 @@ def write_debt_csv(barber_name, days_passed, debt_amount, output_directory):
         debt_amount (float): Total debt amount
         output_directory (str): Directory to save the output file
     """
+    output_directory = Path(output_directory)
+    output_directory.mkdir(parents=True, exist_ok=True)
     output_filename = f"{barber_name}_debt.csv"
-    output_path = os.path.join(output_directory, output_filename)
+    output_path = output_directory / output_filename
 
     try:
         with open(output_path, 'w', newline='', encoding='utf-8') as file:
@@ -236,18 +237,25 @@ def main():
     args = parse_arguments()
 
     # Validate input directory
-    if not os.path.exists(args.directory):
-        print(f"Error: Directory '{args.directory}' does not exist")
+    input_directory = Path(args.directory)
+
+    if not input_directory.exists():
+        print(f"Error: Directory '{input_directory}' does not exist")
         sys.exit(1)
 
-    # Use same directory for output files
-    output_directory = args.directory
+    if not input_directory.is_dir():
+        print(f"Error: '{input_directory}' is not a directory")
+        sys.exit(1)
+
+    # Use a dedicated debts subdirectory for output files
+    output_directory = input_directory / "debts"
+    output_directory.mkdir(parents=True, exist_ok=True)
 
     # Find all CSV files in the directory
     csv_files = []
-    for file in os.listdir(args.directory):
-        if file.endswith('.csv') and not file.endswith('_debt.csv'):
-            csv_files.append(os.path.join(args.directory, file))
+    for entry in input_directory.iterdir():
+        if entry.suffix.lower() == '.csv' and not entry.name.endswith('_debt.csv'):
+            csv_files.append(entry)
 
     if not csv_files:
         print(f"No CSV files found in directory '{args.directory}'")

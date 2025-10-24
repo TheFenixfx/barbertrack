@@ -8,6 +8,37 @@ const PORT = process.env.PORT || 3000;
 // Serve static files from the public directory
 app.use(express.static('public'));
 
+// Reads all *_debt.csv files under barbers/debts and returns summary data
+function loadDebtSummaries() {
+  const debtsDir = path.join(__dirname, 'barbers', 'debts');
+  const files = fs.readdirSync(debtsDir);
+
+  return files
+    .filter((file) => file.endsWith('_debt.csv'))
+    .map((file) => {
+      const filePath = path.join(debtsDir, file);
+      const content = fs.readFileSync(filePath, 'utf8');
+      const lines = content.split(/\r?\n/).filter((line) => line.trim().length > 0);
+
+      if (lines.length < 2) {
+        return null;
+      }
+
+      const dataLine = lines[1].split(',');
+      const days = parseInt(dataLine[0], 10);
+      const amount = parseFloat(dataLine[1]);
+      const name = path.basename(file, '_debt.csv');
+
+      return {
+        name,
+        days,
+        amount
+      };
+    })
+    .filter((entry) => entry !== null)
+    .sort((a, b) => b.amount - a.amount);
+}
+
 // API endpoint to get chart data
 app.get('/api/chartdata', (req, res) => {
   try {
@@ -23,33 +54,17 @@ app.get('/api/chartdata', (req, res) => {
 
 app.get('/api/debts', (req, res) => {
   try {
-    const barbersDir = path.join(__dirname, 'barbers');
-    const files = fs.readdirSync(barbersDir);
-    const debtSummaries = files
-      .filter((file) => file.endsWith('_debt.csv'))
-      .map((file) => {
-        const filePath = path.join(barbersDir, file);
-        const content = fs.readFileSync(filePath, 'utf8');
-        const lines = content.split(/\r?\n/).filter((line) => line.trim().length > 0);
+    const debtSummaries = loadDebtSummaries();
+    res.json({ debts: debtSummaries });
+  } catch (error) {
+    console.error('Error reading debt CSV files:', error);
+    res.status(500).json({ error: 'Failed to load debt summaries' });
+  }
+});
 
-        if (lines.length < 2) {
-          return null;
-        }
-
-        const dataLine = lines[1].split(',');
-        const days = parseInt(dataLine[0], 10);
-        const amount = parseFloat(dataLine[1]);
-        const name = path.basename(file, '_debt.csv');
-
-        return {
-          name,
-          days,
-          amount
-        };
-      })
-      .filter((entry) => entry !== null)
-      .sort((a, b) => b.amount - a.amount);
-
+app.get('/barbers/debts', (req, res) => {
+  try {
+    const debtSummaries = loadDebtSummaries();
     res.json({ debts: debtSummaries });
   } catch (error) {
     console.error('Error reading debt CSV files:', error);
