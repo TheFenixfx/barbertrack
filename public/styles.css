@@ -324,6 +324,14 @@ header p {
     margin-left: 10px;
 }
 
+.debt-source {
+    font-size: 0.75em;
+    color: #7f8c8d;
+    margin-left: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
     .container {

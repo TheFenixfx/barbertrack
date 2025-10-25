@@ -305,12 +305,21 @@ class PaymentChart {
     }
 
     async fetchDebtData() {
-        const response = await fetch('/api/debts');
-        if (!response.ok) {
-            throw new Error('Failed to fetch debt data');
+        const calculatedDebts = this.calculateDefaultDebts();
+
+        try {
+            const response = await fetch('/api/debts');
+            if (!response.ok) {
+                throw new Error('Failed to fetch debt data');
+            }
+
+            const payload = await response.json();
+            const storedDebts = payload.debts || [];
+            return this.mergeDebtSummaries(calculatedDebts, storedDebts);
+        } catch (error) {
+            console.warn('Debt API unavailable, using default calculation.', error);
+            return calculatedDebts;
         }
-        const payload = await response.json();
-        return payload.debts || [];
     }
 
     formatCurrency(amount) {
@@ -319,6 +328,155 @@ class PaymentChart {
             currency: 'USD',
             minimumFractionDigits: 2
         }).format(amount);
+    }
+
+    parseDateAtMidnight(dateString) {
+        if (!dateString) {
+            return null;
+        }
+
+        const parsed = new Date(`${dateString}T00:00:00`);
+        if (Number.isNaN(parsed.getTime())) {
+            return null;
+        }
+
+        parsed.setHours(0, 0, 0, 0);
+        return parsed;
+    }
+
+    getLastPaymentDate(payments) {
+        if (!Array.isArray(payments) || !payments.length) {
+            return null;
+        }
+
+        return payments.reduce((latest, payment) => {
+            const candidate = this.parseDateAtMidnight(payment?.endDate || payment?.startDate);
+            if (!candidate) {
+                return latest;
+            }
+
+            if (!latest || candidate > latest) {
+                return candidate;
+            }
+
+            return latest;
+        }, null);
+    }
+
+    getDailyRateForBarber(barberName) {
+        if (!barberName) {
+            return 7;
+        }
+
+        return barberName.toLowerCase() === 'genesis' ? 5 : 7;
+    }
+
+    countChargeableDays(startDate, endDate) {
+        if (!(startDate instanceof Date) || !(endDate instanceof Date)) {
+            return 0;
+        }
+
+        if (startDate > endDate) {
+            return 0;
+        }
+
+        const cursor = new Date(startDate);
+        let chargeableDays = 0;
+
+        while (cursor <= endDate) {
+            if (cursor.getDay() !== 0) {
+                chargeableDays += 1;
+            }
+            cursor.setDate(cursor.getDate() + 1);
+        }
+
+        return chargeableDays;
+    }
+
+    calculateDefaultDebts(referenceDate = new Date()) {
+        if (!this.data || !this.data.teams) {
+            return [];
+        }
+
+        const today = new Date(referenceDate);
+        today.setHours(0, 0, 0, 0);
+
+        const defaults = Object.entries(this.data.teams)
+            .map(([barberName, payments]) => {
+                const lastPaymentDate = this.getLastPaymentDate(payments);
+                if (!lastPaymentDate) {
+                    return null;
+                }
+
+                const dailyRate = this.getDailyRateForBarber(barberName);
+                const firstPendingDate = new Date(lastPaymentDate);
+                firstPendingDate.setDate(firstPendingDate.getDate() + 1);
+                firstPendingDate.setHours(0, 0, 0, 0);
+
+                let days = 0;
+                if (firstPendingDate <= today) {
+                    days = this.countChargeableDays(firstPendingDate, today);
+                }
+
+                return {
+                    name: barberName,
+                    days,
+                    amount: days * dailyRate,
+                    lastPaymentDate,
+                    dailyRate,
+                    source: 'calculated'
+                };
+            })
+            .filter((entry) => entry !== null);
+
+        return defaults.sort((a, b) => b.amount - a.amount);
+    }
+
+    mergeDebtSummaries(calculatedDebts, storedDebts) {
+        const merged = [];
+        const storedByName = new Map();
+
+        if (Array.isArray(storedDebts)) {
+            storedDebts.forEach((entry) => {
+                if (entry && entry.name) {
+                    storedByName.set(entry.name, entry);
+                }
+            });
+        }
+
+        const calculatedNames = new Set();
+
+        calculatedDebts.forEach((calculated) => {
+            calculatedNames.add(calculated.name);
+            const storedMatch = storedByName.get(calculated.name);
+            merged.push({
+                ...calculated,
+                storedAmount: storedMatch ? storedMatch.amount : null,
+                storedDays: storedMatch ? storedMatch.days : null
+            });
+        });
+
+        if (Array.isArray(storedDebts)) {
+            storedDebts.forEach((entry) => {
+                if (!entry || calculatedNames.has(entry.name)) {
+                    return;
+                }
+
+                const dailyRate = this.getDailyRateForBarber(entry.name);
+                merged.push({
+                    name: entry.name,
+                    amount: entry.amount,
+                    days: entry.days,
+                    lastPaymentDate: null,
+                    dailyRate,
+                    source: 'stored',
+                    storedAmount: entry.amount,
+                    storedDays: entry.days
+                });
+            });
+        }
+
+        return merged.sort((a, b) => b.amount - a.amount);
     }
 
     setupDebtModal() {
@@ -363,11 +521,17 @@ class PaymentChart {
             const listItems = debts
                 .map((debt) => {
                     const amount = this.formatCurrency(debt.amount);
+                    const sourceLabel = debt.source === 'calculated'
+                        ? ' <span class="debt-source">estimado</span>'
+                        : debt.source === 'stored'
+                            ? ' <span class="debt-source">registro</span>'
+                            : '';
+                    const dayLabel = debt.days === 1 ? 'día' : 'días';
                     return `
                         <li>
                             <span class="debt-name">${debt.name}</span>
-                            <span class="debt-amount">${amount}</span>
-                            <span class="debt-days">${debt.days} días</span>
+                            <span class="debt-amount">${amount}${sourceLabel}</span>
+                            <span class="debt-days">${debt.days} ${dayLabel}</span>
                         </li>
                     `;
                 })
@@ -381,12 +545,9 @@ class PaymentChart {
         };
 
         button.addEventListener('click', async () => {
+            modalBody.innerHTML = '<p>Cargando deudas...</p>';
             try {
-                if (!this.debtData) {
-                    modalBody.innerHTML = '<p>Cargando deudas...</p>';
-                    this.debtData = await this.fetchDebtData();
-                }
-
+                this.debtData = await this.fetchDebtData();
                 renderModalContent(this.debtData);
                 openModal();
             } catch (error) {
