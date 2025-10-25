@@ -8,6 +8,32 @@ const PORT = process.env.PORT || 3000;
 // Serve static files from the public directory
 app.use(express.static('public'));
 
+// Allow downloading CSV summaries for each barber
+const barberCsvMap = {
+  Alejandro: path.join(__dirname, 'barbers', 'Alejandro.csv'),
+  Andres: path.join(__dirname, 'barbers', 'Andres.csv'),
+  David: path.join(__dirname, 'barbers', 'David.csv'),
+  Genesis: path.join(__dirname, 'barbers', 'Genesis.csv')
+};
+
+app.get('/downloads/:barberName', (req, res) => {
+  const { barberName } = req.params;
+  const filePath = barberCsvMap[barberName];
+
+  if (!filePath) {
+    return res.status(404).json({ error: 'Barber CSV not found' });
+  }
+
+  res.download(filePath, `${barberName}.csv`, (error) => {
+    if (error) {
+      console.error(`Error downloading CSV for ${barberName}:`, error);
+      if (!res.headersSent) {
+        res.status(500).json({ error: 'Failed to download CSV' });
+      }
+    }
+  });
+});
+
 // Reads all *_debt.csv files under barbers/debts and returns summary data
 function loadDebtSummaries() {
   const debtsDir = path.join(__dirname, 'barbers', 'debts');

@@ -5,6 +5,7 @@ class PaymentChart {
         this.pixelsPerDay = 40; // Height of each day in pixels
         this.dateRange = { start: null, end: null };
         this.modalKeyHandler = null;
+        this.downloadableBarbers = new Set(['Alejandro', 'Andres', 'David', 'Genesis']);
         this.init();
     }
 
@@ -105,6 +106,13 @@ class PaymentChart {
         return `https://wa.me/04162069479?text=${encodeURIComponent(message)}`;
     }
 
+    getDownloadUrl(teamName) {
+        if (!this.downloadableBarbers.has(teamName)) {
+            return null;
+        }
+        return `/downloads/${encodeURIComponent(teamName)}`;
+    }
+
     renderTimeline() {
         const timelineAxis = document.getElementById('timelineAxis');
         const totalDays = this.getDaysSinceStart(this.dateRange.end) + 1;
@@ -147,7 +155,18 @@ class PaymentChart {
         // Team header
         const header = document.createElement('div');
         header.className = 'team-header';
-        header.textContent = teamName;
+
+        const downloadUrl = this.getDownloadUrl(teamName);
+        const titleElement = document.createElement(downloadUrl ? 'a' : 'span');
+        titleElement.className = 'team-name';
+        titleElement.textContent = teamName;
+
+        if (downloadUrl) {
+            titleElement.href = downloadUrl;
+            titleElement.setAttribute('download', `${teamName}.csv`);
+        }
+
+        header.appendChild(titleElement);
         column.appendChild(header);
 
         // Payment blocks
