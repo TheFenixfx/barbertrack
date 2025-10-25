@@ -417,6 +417,20 @@
       {
         "startDate": "2025-10-04",
         "endDate": "2025-10-04",
+        "link": "no-laboro.jpg",
+        "Operation": "00000000",
+        "Amount": "0"
+      },
+      {
+        "startDate": "2025-10-06",
+        "endDate": "2025-10-06",
+        "link": "no-laboro.jpg",
+        "Operation": "00000000",
+        "Amount": "0"
+      },
+      {
+        "startDate": "2025-10-07",
+        "endDate": "2025-10-07",
         "link": null,
         "Operation": null,
         "Amount": "0"
@@ -741,6 +755,20 @@
       {
         "startDate": "2025-09-18",
         "endDate": "2025-09-18",
+        "link": "no-laboro.jpg",
+        "Operation": null,
+        "Amount": "0"
+      },
+      {
+        "startDate": "2025-09-19",
+        "endDate": "2025-09-19",
+        "link": "no-laboro.jpg",
+        "Operation": null,
+        "Amount": "0"
+      },
+      {
+        "startDate": "2025-09-20",
+        "endDate": "2025-09-20",
         "link": null,
         "Operation": null,
         "Amount": "0"
@@ -1042,8 +1070,22 @@
         "Amount": "7"
       },
       {
-        "startDate": "2025-09-14",
-        "endDate": "2025-09-14",
+        "startDate": "2025-09-15",
+        "endDate": "2025-09-15",
+        "link": "no-laboro.jpg",
+        "Operation": null,
+        "Amount": "0"
+      },
+      {
+        "startDate": "2025-09-16",
+        "endDate": "2025-09-16",
+        "link": "no-laboro.jpg",
+        "Operation": null,
+        "Amount": "0"
+      },
+      {
+        "startDate": "2025-09-17",
+        "endDate": "2025-09-17",
         "link": null,
         "Operation": null,
         "Amount": "-1"
@@ -1319,9 +1361,30 @@
       {
         "startDate": "2025-09-12",
         "endDate": "2025-09-12",
+        "link": "mama.jpg",
+        "Operation": "00000000",
+        "Amount": "5"
+      },
+      {
+        "startDate": "2025-09-13",
+        "endDate": "2025-09-13",
+        "link": "no-laboral.jpg",
+        "Operation": "00000000",
+        "Amount": "0"
+      },
+      {
+        "startDate": "2025-09-15",
+        "endDate": "2025-09-15",
+        "link": "no-laboral.jpg",
+        "Operation": "00000000",
+        "Amount": "0"
+      },
+      {
+        "startDate": "2025-09-16",
+        "endDate": "2025-09-16",
         "link": null,
         "Operation": null,
-        "Amount": "0"
+        "Amount": null
       }
     ]
   }
