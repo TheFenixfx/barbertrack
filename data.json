@@ -431,6 +431,97 @@
       {
         "startDate": "2025-10-07",
         "endDate": "2025-10-07",
+        "link": "backups/Alejandro/004119140856.jpg",
+        "Operation": "004119140856",
+        "Amount": "28"
+      },
+      {
+        "startDate": "2025-10-08",
+        "endDate": "2025-10-08",
+        "link": "backups/Alejandro/004119140856.jpg",
+        "Operation": "004119140856",
+        "Amount": "21"
+      },
+      {
+        "startDate": "2025-10-09",
+        "endDate": "2025-10-09",
+        "link": "backups/Alejandro/004119140856.jpg",
+        "Operation": "004119140856",
+        "Amount": "14"
+      },
+      {
+        "startDate": "2025-10-10",
+        "endDate": "2025-10-10",
+        "link": "backups/Alejandro/004119140856.jpg",
+        "Operation": "004119140856",
+        "Amount": "7"
+      },
+      {
+        "startDate": "2025-10-11",
+        "endDate": "2025-10-11",
+        "link": "backups/Alejandro/004119140856.jpg",
+        "Operation": "004119140856",
+        "Amount": "14"
+      },
+      {
+        "startDate": "2025-10-13",
+        "endDate": "2025-10-13",
+        "link": "backups/Alejandro/004105474417.jpg",
+        "Operation": "004105474417",
+        "Amount": "7"
+      },
+      {
+        "startDate": "2025-10-14",
+        "endDate": "2025-10-14",
+        "link": "backups/Alejandro/004055044642.jpg",
+        "Operation": "004055044642",
+        "Amount": "42"
+      },
+      {
+        "startDate": "2025-10-15",
+        "endDate": "2025-10-15",
+        "link": "backups/Alejandro/004055044642.jpg",
+        "Operation": "004055044642",
+        "Amount": "35"
+      },
+      {
+        "startDate": "2025-10-16",
+        "endDate": "2025-10-16",
+        "link": "backups/Alejandro/004055044642.jpg",
+        "Operation": "004055044642",
+        "Amount": "28"
+      },
+      {
+        "startDate": "2025-10-17",
+        "endDate": "2025-10-17",
+        "link": "backups/Alejandro/004055044642.jpg",
+        "Operation": "004055044642",
+        "Amount": "21"
+      },
+      {
+        "startDate": "2025-10-18",
+        "endDate": "2025-10-18",
+        "link": "backups/Alejandro/004055044642.jpg",
+        "Operation": "004055044642",
+        "Amount": "14"
+      },
+      {
+        "startDate": "2025-10-20",
+        "endDate": "2025-10-20",
+        "link": "backups/Alejandro/004055044642.jpg",
+        "Operation": "004055044642",
+        "Amount": "7"
+      },
+      {
+        "startDate": "2025-10-21",
+        "endDate": "2025-10-21",
+        "link": "3-11-2025.jpg-no-laboral",
+        "Operation": "000000",
+        "Amount": "0"
+      },
+      {
+        "startDate": "2025-10-22",
+        "endDate": "2025-10-22",
         "link": null,
         "Operation": null,
         "Amount": "0"
@@ -769,7 +860,84 @@
       {
         "startDate": "2025-09-20",
         "endDate": "2025-09-20",
-        "link": null,
+        "link": "backups\\Andres\\004050345133.jpg",
+        "Operation": "004050345133",
+        "Amount": "42"
+      },
+      {
+        "startDate": "2025-09-22",
+        "endDate": "2025-09-22",
+        "link": "backups\\Andres\\004050345133.jpg",
+        "Operation": "004050345133",
+        "Amount": "35"
+      },
+      {
+        "startDate": "2025-09-23",
+        "endDate": "2025-09-23",
+        "link": "backups\\Andres\\004050345133.jpg",
+        "Operation": "004050345133",
+        "Amount": "28"
+      },
+      {
+        "startDate": "2025-09-24",
+        "endDate": "2025-09-24",
+        "link": "backups\\Andres\\004050345133.jpg",
+        "Operation": "004050345133",
+        "Amount": "21"
+      },
+      {
+        "startDate": "2025-09-25",
+        "endDate": "2025-09-25",
+        "link": "backups\\Andres\\004050345133.jpg",
+        "Operation": "004050345133",
+        "Amount": "14"
+      },
+      {
+        "startDate": "2025-09-26",
+        "endDate": "2025-09-26",
+        "link": "backups\\Andres\\004050345133.jpg",
+        "Operation": "004050345133",
+        "Amount": "7"
+      },
+      {
+        "startDate": "2025-09-27",
+        "endDate": "2025-09-27",
+        "link": "backups\\Andres\\004124938597.jpg",
+        "Operation": "004124938597",
+        "Amount": "28"
+      },
+      {
+        "startDate": "2025-09-29",
+        "endDate": "2025-09-29",
+        "link": "backups\\Andres\\004124938597.jpg",
+        "Operation": "004124938597",
+        "Amount": "21"
+      },
+      {
+        "startDate": "2025-09-30",
+        "endDate": "2025-09-30",
+        "link": "backups\\Andres\\004124938597.jpg",
+        "Operation": "004124938597",
+        "Amount": "14"
+      },
+      {
+        "startDate": "2025-10-01",
+        "endDate": "2025-10-01",
+        "link": "backups\\Andres\\004124938597.jpg",
+        "Operation": "004124938597",
+        "Amount": "7"
+      },
+      {
+        "startDate": "2025-10-02",
+        "endDate": "2025-10-02",
+        "link": "3-11-2025.jpg-no-laboral",
+        "Operation": "00000",
+        "Amount": "0"
+      },
+      {
+        "startDate": "2025-10-03",
+        "endDate": "2025-10-03",
+        "link": "0",
         "Operation": null,
         "Amount": "0"
       }
@@ -1086,9 +1254,93 @@
       {
         "startDate": "2025-09-17",
         "endDate": "2025-09-17",
+        "link": "backups/David/004053170423.jpg",
+        "Operation": "004053170423",
+        "Amount": "35"
+      },
+      {
+        "startDate": "2025-09-18",
+        "endDate": "2025-09-18",
+        "link": "backups/David/004053170423.jpg",
+        "Operation": "004053170423",
+        "Amount": "28"
+      },
+      {
+        "startDate": "2025-09-19",
+        "endDate": "2025-09-19",
+        "link": "backups/David/004053170423.jpg",
+        "Operation": "004053170423",
+        "Amount": "21"
+      },
+      {
+        "startDate": "2025-09-20",
+        "endDate": "2025-09-20",
+        "link": "backups/David/004053170423.jpg",
+        "Operation": "004053170423",
+        "Amount": "14"
+      },
+      {
+        "startDate": "2025-09-22",
+        "endDate": "2025-09-22",
+        "link": "backups/David/004053170423.jpg",
+        "Operation": "004053170423",
+        "Amount": "7"
+      },
+      {
+        "startDate": "2025-09-23",
+        "endDate": "2025-09-23",
+        "link": "backups/David/004121069604.jpg",
+        "Operation": "004121069604",
+        "Amount": "42"
+      },
+      {
+        "startDate": "2025-09-24",
+        "endDate": "2025-09-24",
+        "link": "backups/David/004121069604.jpg",
+        "Operation": "004121069604",
+        "Amount": "35"
+      },
+      {
+        "startDate": "2025-09-25",
+        "endDate": "2025-09-25",
+        "link": "backups/David/004121069604.jpg",
+        "Operation": "004121069604",
+        "Amount": "28"
+      },
+      {
+        "startDate": "2025-09-26",
+        "endDate": "2025-09-26",
+        "link": "backups/David/004121069604.jpg",
+        "Operation": "004121069604",
+        "Amount": "21"
+      },
+      {
+        "startDate": "2025-09-27",
+        "endDate": "2025-09-27",
+        "link": "backups/David/004121069604.jpg",
+        "Operation": "004121069604",
+        "Amount": "14"
+      },
+      {
+        "startDate": "2025-09-29",
+        "endDate": "2025-09-29",
+        "link": "backups/David/004121069604.jpg",
+        "Operation": "004121069604",
+        "Amount": "7"
+      },
+      {
+        "startDate": "2025-09-30",
+        "endDate": "2025-09-30",
+        "link": "3-11-2025.jpg-no-laboral",
+        "Operation": "00000",
+        "Amount": "0"
+      },
+      {
+        "startDate": "2025-10-01",
+        "endDate": "2025-09-01",
         "link": null,
         "Operation": null,
-        "Amount": "-1"
+        "Amount": "0"
       }
     ],
     "Genesis": [
@@ -1382,9 +1634,86 @@
       {
         "startDate": "2025-09-16",
         "endDate": "2025-09-16",
+        "link": "backups\\Genesis\\004039608745.jpg",
+        "Operation": "004039608745",
+        "Amount": "10"
+      },
+      {
+        "startDate": "2025-09-17",
+        "endDate": "2025-09-17",
+        "link": "backups\\Genesis\\004039608745.jpg",
+        "Operation": "004039608745",
+        "Amount": "5"
+      },
+      {
+        "startDate": "2025-09-18",
+        "endDate": "2025-09-18",
+        "link": "e:\\\\Projects\\\\Barberia\\\\payment-chart-app\\\\Genesis\\\\004096519160.jpg",
+        "Operation": "004096519160",
+        "Amount": "20"
+      },
+      {
+        "startDate": "2025-09-19",
+        "endDate": "2025-09-19",
+        "link": "e:\\\\Projects\\\\Barberia\\\\payment-chart-app\\\\Genesis\\\\004096519160.jpg",
+        "Operation": "004096519160",
+        "Amount": "15"
+      },
+      {
+        "startDate": "2025-09-20",
+        "endDate": "2025-09-20",
+        "link": "e:\\\\Projects\\\\Barberia\\\\payment-chart-app\\\\Genesis\\\\004096519160.jpg",
+        "Operation": "004096519160",
+        "Amount": "10"
+      },
+      {
+        "startDate": "2025-09-22",
+        "endDate": "2025-09-22",
+        "link": "e:\\\\Projects\\\\Barberia\\\\payment-chart-app\\\\Genesis\\\\004096519160.jpg",
+        "Operation": "004096519160",
+        "Amount": "5"
+      },
+      {
+        "startDate": "2025-09-22",
+        "endDate": "2025-09-22",
+        "link": "3-11-2025.jpg-no-laboral",
+        "Operation": "0000000",
+        "Amount": "0"
+      },
+      {
+        "startDate": "2025-09-23",
+        "endDate": "2025-09-23",
+        "link": "e:\\Projects\\Barberia\\payment-chart-app\\Genesis\\004149905214.jpg",
+        "Operation": "004149905214",
+        "Amount": "20"
+      },
+      {
+        "startDate": "2025-09-24",
+        "endDate": "2025-09-24",
+        "link": "e:\\Projects\\Barberia\\payment-chart-app\\Genesis\\004149905214.jpg",
+        "Operation": "004149905214",
+        "Amount": "15"
+      },
+      {
+        "startDate": "2025-09-25",
+        "endDate": "2025-09-25",
+        "link": "e:\\Projects\\Barberia\\payment-chart-app\\Genesis\\004149905214.jpg",
+        "Operation": "004149905214",
+        "Amount": "10"
+      },
+      {
+        "startDate": "2025-09-26",
+        "endDate": "2025-09-26",
+        "link": "e:\\Projects\\Barberia\\payment-chart-app\\Genesis\\004149905214.jpg",
+        "Operation": "004149905214",
+        "Amount": "5"
+      },
+      {
+        "startDate": "2025-09-27",
+        "endDate": "2025-09-27",
         "link": null,
         "Operation": null,
-        "Amount": null
+        "Amount": "0"
       }
     ]
   }
