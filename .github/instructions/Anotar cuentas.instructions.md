@@ -38,5 +38,5 @@ Notes and parsing details:
 - Date format should be normalized to the CSV date format used by the project (confirm with the user if unsure).
 - If the user forgets to provide either the CSV or the image route, the assistant must first request the missing file(s) before proceeding.
 - Ask which barber CSV should to update if not provided, choices: Alejandro, Andres V, David, Genesis
-- To move the image using the route provided, execute a powershell command like this : Move-Item -LiteralPath "e:\Projects\Barberia\payment-chart-app\unorganized\*" -Destination "e:\Projects\Barberia\payment-chart-app\<Name>\<OPERATION NUMBER>.jpg"
+- To move the image using the route provided, execute a powershell command like this : Move-Item -LiteralPath "e:\Projects\Barberia\payment-chart-app\unorganized\*" -Destination "e:\Projects\Barberia\payment-chart-app\backups\<Name>\<OPERATION NUMBER>.jpg"
 - Ensure the image is moved

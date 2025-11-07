@@ -1,10 +1,9 @@
-To assist a user with this task, I will need to organize the process into a clear, step-by-step workflow. This will help me guide the user and ensure all the necessary information is collected to correctly populate the CSV file.
 
 Step 1: Initial File Check
-First, I will confirm if the user has provided the necessary files. I will ask the user to upload both the CSV file and the picture (JPEG) if they haven't already. I cannot proceed without these files.
+First, Assume the user has provided the necessary files. The user has uploaded both the CSV file and the picture (JPEG). I cannot proceed without these files.
 
 Step 2: Information Extraction and Calculation
-Once the files are uploaded, I will extract the following key data from the provided picture:
+Extract the following key data from the provided picture:
 
 Amount
 
@@ -12,10 +11,10 @@ Date
 
 Operación number
 
-After extracting the amount, I will ask the user for the rate change they want me to use. I will then perform the calculation: Amount / Rate Change. The resulting value will be placed in the Amount column of the CSV file. I will apply this calculation to all relevant entries, following the specified pattern.
+After extracting the amount, I will use the rate change he provided in USD. The value will be placed in the Amount column of the CSV file.
 
 Step 3: Date Range and Link Population
-Next, I will focus on the Date and Link columns. I will ask the user to specify a date range or a single date. For each date within this range, I will ask for the corresponding payment link route.
+Next, I will focus on the Date and Link columns. I will use the date range or a single date provided. For each date within this range, I will c for the corresponding payment link route.
 
 I will also ask the user if there are any specific dates within the range that will not have a payment link. For these dates, the Link column will be left empty.
 
