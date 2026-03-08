@@ -1,0 +1,139 @@
+Date,Sender,Amount (Bs),Bank,Reference (Last 4)
+28/12/2025,Alejandro Peluquero,"8.157,87",BDV,7364
+28/12/2025,Genesis,"8.740,57",BDV,2127
+29/12/2025,Genesis,"2.949,70",Mercantil,4227
+29/12/2025,Andres,"8.850,00",BDV,3300
+30/12/2025,Alejandro Peluquero,"6.261,00",BDV,3065
+31/12/2025,Jesus David,"12.522,01",BDV,7063
+05/01/2026,Genesis,"3.046,80",BDV,8877
+05/01/2026,Andres,"2.133,00",BDV,8207
+06/01/2026,Alejandro Peluquero,"2.465,24",BDV,4777
+06/01/2026,Andres,"2.160,00",BDV,3322
+07/01/2026,Genesis,"3.118,81",BDV,8322
+
+
+
+Date,Sender,Amount (Bs),Bank,Operation,Concept
+07/01/2026,Jesus David,"2.183,17",BDV,004748724087,pago
+08/01/2026,Genesis,"1.605,16",BDV,004754387343,genesis
+09/01/2026,Alejandro Peluquero,"2.569,00",BDV,004757354076,pago
+09/01/2026,Genesis,"1.626,95",BDV,004763031563,genesis
+09/01/2026,Andres,"6.834,00",BDV,004763844459,pago
+09/01/2026,Jesus David,"2.277,73",BDV,004764371463,pago
+09/01/2026,Alejandro Peluquero,"6.742,00",BDV,004764711596,pago
+10/01/2026,Jesus David,"2.277,73",BDV,004774210360,pago
+13/01/2026,Alejandro Peluquero,"5.286,00",BDV,004794141375,pago
+13/01/2026,Andres,"2.643,00",BDV,004794219926,pag
+14/01/2026,Genesis,"3.364,60",BDV,004801359149,genesis
+14/01/2026,Andres,"2.692,00",BDV,004801818484,martes
+14/01/2026,Jesus David,"2.691,68",BDV,004802550177,lunes
+14/01/2026,Alejandro Peluquero,"2.692,00",BDV,004802562598,pago
+
+Date,Sender,Amount (Bs),Bank,Operation,Concept
+07/01/2026,Jesus David,"2.183,17",BDV,004748724087,pago
+08/01/2026,Genesis,"1.605,16",BDV,004754387343,genesis
+09/01/2026,Alejandro Peluquero,"2.569,00",BDV,004757354076,pago
+09/01/2026,Genesis,"1.626,95",BDV,004763031563,genesis
+09/01/2026,Andres,"6.834,00",BDV,004763844459,pago
+09/01/2026,Jesus David,"2.277,73",BDV,004764371463,pago
+09/01/2026,Alejandro Peluquero,"6.742,00",BDV,004764711596,pago
+10/01/2026,Jesus David,"2.277,73",BDV,004774210360,pago
+13/01/2026,Alejandro Peluquero,"5.286,00",BDV,004794141375,pago
+13/01/2026,Andres,"2.643,00",BDV,004794219926,pag
+14/01/2026,Genesis,"3.364,60",BDV,004801359149,genesis
+14/01/2026,Andres,"2.692,00",BDV,004801818484,martes
+14/01/2026,Jesus David,"2.691,68",BDV,004802550177,lunes
+14/01/2026,Alejandro Peluquero,"2.692,00",BDV,004802562598,pago
+15/01/2026,Genesis,"1.695,75",BDV,004810995985,genesis
+16/01/2026,Alejandro Peluquero,"5.468,00",BDV,004814504353,pago
+16/01/2026,Genesis,"3.417,43",BDV,004822476194,genesis
+16/01/2026,Jesus David,"5.467,88",BDV,004823079300,dos dias
+16/01/2026,Andres,"5.470,00",BDV,004823424274,pag
+18/01/2026,Alejandro Peluquero,"2.734,00",BDV,004844499264,pago
+20/01/2026,Genesis,"3.445,07",BDV,004861396604,genesis
+21/01/2026,Jesus David,"5.556,21",BDV,004867439918,viernes y sabado
+21/01/2026,Andres,"2.780,00",BDV,004870282848,pago
+22/01/2026,Alejandro Peluquero,"8.399,00",BDV,004877526925,pago
+22/01/2026,Andres,"2.800,00",BDV,004878152336,sabado
+24/01/2026,Andres,"11.290,00",BDV,004896275411,4dias
+24/01/2026,Genesis,"7.054,13",BDV,004897353993,gemwsis
+24/01/2026,Alejandro Peluquero,"5.643,00",BDV,004899629362,pago
+
+
+Date,Sender,Amount_Bs,Reference_Suffix,Concept
+24/01/2026,Alejandro Peluquero,5643.00,9362,pago
+26/01/2026,Genesis,1777.76,5486,genesis
+29/01/2026,Genesis,3636.62,4779,genesis
+30/01/2026,Genesis,1836.53,3640,genesis
+29/01/2026,Andres,2910.00,7861,sabado24
+29/01/2026,Andres,2910.01,2844,lunes26
+30/01/2026,Andres,5510.00,8021,
+30/01/2026,Jesus David,8080.75,6256,
+31/01/2026,Alejandro Peluquero,11754.00,3717,pago
+01/02/2026,Andres,9183.00,0825,pag
+03/02/2026,Alejandro Peluquero,5954.00,1417,pago
+04/02/2026,Genesis,5626.25,3029,genesis
+05/02/2026,Genesis,1892.29,3780,
+05/02/2026,Andres,3030.00,7084,lunes
+05/02/2026,Andres,6060.00,6812,pag
+
+
+Date,Sender,Amount_Bs,Reference_Suffix,Concept
+05/02/2026,Andres,3030.00,3084,lunes
+05/02/2026,Andres,6060.00,6812,pag
+06/02/2026,Genesis,1905.54,4713,
+10/02/2026,Genesis,2311.63,4917,martes
+11/02/2026,Andres,9330.00,4140,24dollars
+11/02/2026,Jesus David,9330.00,0012,tres dias
+13/02/2026,Genesis,2359.33,5936,genesis
+14/02/2026,Alejandro Peluquero,18875.00,3619,pago
+19/02/2026,Genesis,4784.95,2943,
+20/02/2026,Genesis,2414.00,1733,
+
+
+
+Date,Sender,Amount_Bs,Reference_Suffix,Concept
+05/02/2026,Andres,3030.00,3084,lunes
+05/02/2026,Andres,6060.00,6812,pag
+06/02/2026,Genesis,1905.54,4713,
+10/02/2026,Genesis,2311.63,4917,martes
+11/02/2026,Andres,9330.00,4140,24dollars
+11/02/2026,Jesus David,9330.00,0012,tres dias
+13/02/2026,Genesis,2359.33,5936,genesis
+14/02/2026,Alejandro Peluquero,18875.00,3619,pago
+19/02/2026,Genesis,4784.95,2943,
+20/02/2026,Genesis,2414.00,1733,
+20/02/2026,Jesus David,12874.70,6473,paho
+21/02/2026,Alejandro Peluquero,6438.00,9140,pago
+21/02/2026,Andres,16000.00,6285,40dolares
+24/02/2026,Genesis,4888.54,9402,genesis
+25/02/2026,Genesis,2466.00,3122,genesis
+27/02/2026,Genesis,5008.29,9541,genesis
+28/02/2026,Alejandro Peluquero,12521.00,1672,pago
+28/02/2026,Jesus David,13355.45,8291,
+01/03/2026,Andres,20000.00,1330,semana
+03/03/2026,Genesis,5062.53,8819,genesis
+
+
+Date,Sender,Amount_Bs,Reference_Suffix,Concept
+05/02/2026,Andres,3030.00,3084,lunes
+05/02/2026,Andres,6060.00,6812,pag
+06/02/2026,Genesis,1905.54,4713,
+10/02/2026,Genesis,2311.63,4917,martes
+11/02/2026,Andres,9330.00,4140,24dollars
+11/02/2026,Jesus David,9330.00,0012,tres dias
+13/02/2026,Genesis,2359.33,5936,genesis
+14/02/2026,Alejandro Peluquero,18875.00,3619,pago
+19/02/2026,Genesis,4784.95,2943,
+20/02/2026,Genesis,2414.00,1733,
+20/02/2026,Jesus David,12874.70,6473,paho
+21/02/2026,Alejandro Peluquero,6438.00,9140,pago
+21/02/2026,Andres,16000.00,6285,40dolares
+24/02/2026,Genesis,4888.54,9402,genesis
+25/02/2026,Genesis,2466.00,3122,genesis
+27/02/2026,Genesis,5008.29,9541,genesis
+28/02/2026,Alejandro Peluquero,12521.00,1672,pago
+28/02/2026,Jesus David,13355.45,8291,
+01/03/2026,Andres,20000.00,1330,semana
+03/03/2026,Genesis,5062.53,9289,genesis
+05/03/2026,Genesis,5135.00,7185,
