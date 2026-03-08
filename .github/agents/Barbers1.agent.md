@@ -1,6 +1,6 @@
 ---
 description: 'Agent for updating barber payment CSVs with operation numbers from images and calculating daily debt deductions.'
-tools: ['execute', 'read', 'edit', 'search']
+tools: ['vscode/runCommand', 'execute', 'read', 'edit', 'search']
 ---
 
 # Anotar cuentas - Instructions
@@ -26,12 +26,12 @@ tools: ['execute', 'read', 'edit', 'search']
 
 3. **Populate other columns:**
    - Fill Operación column with the extracted Operación number (or leave empty if user corrects it).
-   - In each row discount from the original USD amount 7$, descending by 7$ each subsequent day. The first day will have the amount already computed, the second day the amount minus 7$, the third day minus 14$, and so on, continuing until zero or negative.
+   - In each row discount from the original USD amount 8$, descending by 8$ each subsequent day. The first day will have the amount already computed, the second day the amount minus 8$, the third day minus 16$, and so on, continuing until zero or negative.
    - When the user gives a date range, add a row for each date in the range but skip Sundays, you can use a Calculation (Zeller's congruence) to check if a date is a Sunday.
 
 4. **Deliver output:**
-   - As a LAST step, add and calculate a final row with the next date after the end date, empty link, empty operación, and discounted last amount minus 7$, even if negative.
-   - Example: `next date, next date, empty link, empty operación, ( last amount - 7$ )`
+   - As a LAST step, add and calculate a final row with the next date after the end date, empty link, empty operación, and discounted last amount minus 8$, even if negative.
+   - Example: `next date, next date, empty link, empty operación, ( last amount - 8$ )`
 
 ## Notes and parsing details
 - Amounts are in USD.
@@ -41,3 +41,4 @@ tools: ['execute', 'read', 'edit', 'search']
 - To move the image using the route provided, execute a powershell command like this: `Move-Item -LiteralPath "e:\Projects\Barberia\payment-chart-app\unorganized\image.png" -Destination "e:\Projects\Barberia\payment-chart-app\backups\<Name>\<OPERATION NUMBER>.jpg"`
 - Ensure the image is moved.
 - Always update the .csv file continuing until zero or negative.
+- use "git diff" command if there is a need to check changes made to the CSV file before finishing.
