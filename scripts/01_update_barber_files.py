@@ -22,7 +22,7 @@ dollar_prices = {
     datetime(2026, 4, 1): 473.91,  # Apertura de abril
     datetime(2026, 4, 2): 474.05,  # Tasa oficial BCV
     datetime(2026, 4, 3): 474.06,  # Último cierre registrado
-    datetime(2026, 4, 5): 474.06,  # Tasa vigente (Hoy)
+    datetime(2026, 4, 5): 474.06,  # Tasa vigente (Ho
 }
 
 def parse_date(date_str):
