@@ -151,26 +151,71 @@ header p {
 }
 
 .payment-block:hover {
-    background: linear-gradient(135deg, #2ecc71, #27ae60);
     border-color: #27ae60;
     transform: translateX(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     z-index: 5;
 }
 
-/* Most recent payment block styling */
-.payment-block.most-recent {
+/* Payment block content */
+.payment-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.payment-date {
+    font-size: 10px;
+    opacity: 0.9;
+}
+
+.payment-amount {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.payment-days {
+    font-size: 9px;
+    opacity: 0.8;
+    margin-top: 2px;
+}
+
+/* Large payment styling (>$40) */
+.payment-block.large-payment {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    border: 2px solid #2980b9;
+}
+
+.payment-block.large-payment:hover {
+    background: linear-gradient(135deg, #5dade2, #3498db);
+    border-color: #3498db;
+}
+
+/* Medium payment styling (>20 and <=40) */
+.payment-block.medium-payment {
+    background: linear-gradient(135deg, #27ae60, #229954);
+    border: 2px solid #229954;
+}
+
+/* Debt day styling (amount = 0) */
+.payment-block.debt-day {
     background: linear-gradient(135deg, #e74c3c, #c0392b);
     border: 2px solid #c0392b;
-    box-shadow: 0 3px 6px rgba(231, 76, 60, 0.4);
+    opacity: 0.7;
+}
+
+/* Most recent payment block styling */
+.payment-block.most-recent {
+    border: 3px solid #f39c12;
+    box-shadow: 0 3px 6px rgba(243, 156, 18, 0.4);
     animation: pulse 2s infinite;
 }
 
 .payment-block.most-recent:hover {
-    background: linear-gradient(135deg, #ec7063, #e74c3c);
-    border-color: #e74c3c;
     transform: translateX(-2px) scale(1.02);
-    box-shadow: 0 5px 10px rgba(231, 76, 60, 0.5);
+    box-shadow: 0 5px 10px rgba(243, 156, 18, 0.5);
 }
 
 /* Subtle pulse animation for most recent block */
@@ -193,6 +238,16 @@ header p {
     height: 1px;
     background: #ecf0f1;
     z-index: 1;
+}
+
+/* Sunday styling - lighter/gray */
+.date-label.sunday {
+    color: #bdc3c7;
+    font-weight: 400;
+}
+
+.grid-line.sunday {
+    background: #f5f5f5;
 }
 
 .loading {

@@ -9,3 +9,7 @@ yarn-error.log
 *.local
 /backups
 *.md
+
+/uv
+.uv/
+.venv/

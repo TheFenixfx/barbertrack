@@ -30,28 +30,122 @@ class PaymentChart {
         this.data = await response.json();
     }
 
-    calculateDateRange() {
-        let allDates = [];
+    /**
+     * Get daily rate for a barber based on year.
+     * 2025: $7 for barbers, $5 for Genesis
+     * 2026: $8 for barbers, $6 for Genesis
+     */
+    getDailyRateForBarberAndYear(barberName, year) {
+        const isGenesis = barberName.toLowerCase() === 'genesis';
+        if (year === 2025) {
+            return isGenesis ? 5 : 7;
+        }
+        return isGenesis ? 6 : 8;
+    }
+
+    /**
+     * Calculate how many working days a payment covers based on its amount.
+     * A payment of $48 at $8/day covers exactly 6 working days.
+     * Sundays are NOT charge days and don't consume from balance.
+     * Post-payment: payment on April 11 covers April 11, 10, 9, 8 (skip Sun 7), 6, 5.
+     */
+    calculatePaymentDays(payment, barberName) {
+        const amount = parseFloat(payment.Amount) || 0;
+        if (amount <= 0) {
+            return 1; // Zero/negative amounts show as single day (debt day)
+        }
+
+        const date = new Date(payment.startDate + 'T00:00:00');
+        const year = date.getFullYear();
+        const dailyRate = this.getDailyRateForBarberAndYear(barberName, year);
+
+        // Number of working days covered = amount / dailyRate (rounded down)
+        // Sundays are free - they don't count as covered days
+        const workingDaysCovered = Math.floor(amount / dailyRate);
+
+        return Math.max(1, workingDaysCovered);
+    }
+
+    /**
+     * Get the effective payment date (if Sunday, move to Saturday).
+     * Sunday payments are treated as if made on Saturday.
+     */
+    getEffectivePaymentDate(payment) {
+        const paymentDate = new Date(payment.startDate + 'T00:00:00');
         
-        Object.values(this.data.teams).forEach(team => {
-            team.forEach(payment => {
-                // Create dates at midnight to avoid timezone issues
-                const startDate = new Date(payment.startDate + 'T00:00:00');
-                const endDate = new Date(payment.endDate + 'T00:00:00');
-                allDates.push(startDate);
-                allDates.push(endDate);
+        // If payment is on Sunday, treat it as Saturday
+        if (paymentDate.getDay() === 0) {
+            paymentDate.setDate(paymentDate.getDate() - 1);
+        }
+        
+        return paymentDate;
+    }
+
+    /**
+     * Calculate the START date for a payment based on its amount.
+     * Post-payment: payment on April 11 with $48 at $8/day
+     * covers 6 working days BACKWARD: Apr 11, 10, 9, 8 (skip Sun 7), 6, 5.
+     * We count working days only, skipping Sundays.
+     * 
+     * If payment is on Sunday, treat it as Saturday payment.
+     */
+    calculatePaymentStartDate(payment, barberName) {
+        const amount = parseFloat(payment.Amount) || 0;
+        if (amount <= 0) {
+            return payment.startDate; // Single day for debt
+        }
+
+        // Get effective date (Sunday -> Saturday)
+        const endDate = this.getEffectivePaymentDate(payment);
+        const year = endDate.getFullYear();
+        const dailyRate = this.getDailyRateForBarberAndYear(barberName, year);
+
+        // Number of working days to go backward
+        const workingDaysToCover = Math.floor(amount / dailyRate);
+        
+        let currentDate = new Date(endDate);
+        let daysCounted = 0;
+
+        // Go backward, counting only working days (skip Sundays)
+        while (daysCounted < workingDaysToCover - 1) {
+            // Move backward one day
+            currentDate.setDate(currentDate.getDate() - 1);
+            
+            // Only count if it's NOT Sunday (Sunday is free)
+            if (currentDate.getDay() !== 0) {
+                daysCounted++;
+            }
+        }
+
+        return currentDate.toISOString().split('T')[0];
+    }
+
+    calculateDateRange() {
+        let allDates = []; // all payment dates
+        let allVisualStarts = []; // earliest covered dates (backward expansion)
+        
+        Object.entries(this.data.teams).forEach(([teamName, payments]) => {
+            payments.forEach(payment => {
+                const paymentDate = new Date(payment.startDate + 'T00:00:00');
+                allDates.push(paymentDate);
+                
+                // Calculate visual start (backward expansion)
+                const visualStartDateStr = this.calculatePaymentStartDate(payment, teamName);
+                const visualStartDate = new Date(visualStartDateStr + 'T00:00:00');
+                allVisualStarts.push(visualStartDate);
             });
         });
 
         if (allDates.length === 0) {
-            // Default range if no data
             this.dateRange.start = new Date('2025-08-01T00:00:00');
             this.dateRange.end = new Date('2025-08-31T00:00:00');
         } else {
-            this.dateRange.start = new Date(Math.min(...allDates));
+            // Start = earliest visual start (backward expanded)
+            // End = latest payment date
+            this.dateRange.start = new Date(Math.min(...allVisualStarts));
             this.dateRange.end = new Date(Math.max(...allDates));
             
-            // Add some padding (1 day before and after)
+            // Add padding
             const paddedStart = new Date(this.dateRange.start);
             paddedStart.setDate(paddedStart.getDate() - 1);
             this.dateRange.start = paddedStart;
@@ -61,7 +155,6 @@ class PaymentChart {
             this.dateRange.end = paddedEnd;
         }
         
-        // Ensure both dates are set to midnight
         this.dateRange.start.setHours(0, 0, 0, 0);
         this.dateRange.end.setHours(0, 0, 0, 0);
     }
@@ -84,7 +177,6 @@ class PaymentChart {
         const targetDate = new Date(date);
         const startDate = new Date(this.dateRange.start);
         
-        // Reset time to midnight for accurate day calculation
         targetDate.setHours(0, 0, 0, 0);
         startDate.setHours(0, 0, 0, 0);
         
@@ -92,10 +184,8 @@ class PaymentChart {
         return Math.floor(timeDiff / (1000 * 60 * 60 * 24));
     }
 
-    // Calculate position from bottom (inverted Y-axis)
     getPositionFromBottom(date, totalDays) {
         const daysSinceStart = this.getDaysSinceStart(date);
-        // Invert the position: latest dates at bottom (position 0), oldest at top
         return (totalDays - 1 - daysSinceStart) * this.pixelsPerDay;
     }
 
@@ -118,25 +208,30 @@ class PaymentChart {
         const totalDays = this.getDaysSinceStart(this.dateRange.end) + 1;
         const totalHeight = totalDays * this.pixelsPerDay;
         
-        timelineAxis.style.height = `${totalHeight + 60}px`; // +60 for header space
+        timelineAxis.style.height = `${totalHeight + 60}px`;
         timelineAxis.innerHTML = '';
 
-        // Add grid lines and date labels (from bottom to top)
         let currentDate = new Date(this.dateRange.start);
         while (currentDate <= this.dateRange.end) {
-            // Use inverted positioning: most recent dates at bottom
-            const bottomPosition = this.getPositionFromBottom(currentDate, totalDays) + 60; // +60 for header space
+            const bottomPosition = this.getPositionFromBottom(currentDate, totalDays) + 60;
 
-            // Create date label
+            // Sunday styling (lighter color)
+            const isSunday = currentDate.getDay() === 0;
+
             const dateLabel = document.createElement('div');
             dateLabel.className = 'date-label';
+            if (isSunday) {
+                dateLabel.classList.add('sunday');
+            }
             dateLabel.style.top = `${bottomPosition}px`;
             dateLabel.textContent = this.formatDateForDisplay(currentDate);
             timelineAxis.appendChild(dateLabel);
 
-            // Create grid line
             const gridLine = document.createElement('div');
             gridLine.className = 'grid-line';
+            if (isSunday) {
+                gridLine.classList.add('sunday');
+            }
             gridLine.style.top = `${bottomPosition}px`;
             timelineAxis.appendChild(gridLine);
 
@@ -169,15 +264,30 @@ class PaymentChart {
         header.appendChild(titleElement);
         column.appendChild(header);
 
-        // Payment blocks
+        // Payment blocks - use expanded visualization
         payments.forEach((payment, index) => {
-            // Parse dates consistently with calculateDateRange
-            const startDate = new Date(payment.startDate + 'T00:00:00');
-            const endDate = new Date(payment.endDate + 'T00:00:00');
-            const duration = this.getDaysSinceStart(endDate) - this.getDaysSinceStart(startDate) + 1;
+            const paymentDate = new Date(payment.startDate + 'T00:00:00');
+            // Get effective date (Sunday -> Saturday)
+            const effectiveEndDate = this.getEffectivePaymentDate(payment);
+            // For post-payment: visual block extends BACKWARD from effective payment date
+            // Block START = earliest covered day, Block END = effective payment date
+            const visualStartDateStr = this.calculatePaymentStartDate(payment, teamName);
+            
+            // Calculate visual duration based on payment amount
+            const visualDays = this.calculatePaymentDays(payment, teamName);
 
             const block = document.createElement('a');
             block.className = 'payment-block';
+            
+            // Color coding based on amount
+            const amount = parseFloat(payment.Amount) || 0;
+            if (amount > 40) {
+                block.classList.add('large-payment');
+            } else if (amount > 20) {
+                block.classList.add('medium-payment');
+            } else if (amount <= 0) {
+                block.classList.add('debt-day');
+            }
             
             // Check if this is the most recent payment for this team
             const teamMostRecent = mostRecent[teamName];
@@ -187,27 +297,33 @@ class PaymentChart {
                 block.classList.add('most-recent');
             }
             
-            // Use inverted positioning: calculate from bottom
-            const blockBottomPosition = this.getPositionFromBottom(endDate, totalDays) + 60; // +60 for header
+            // Position: block BOTTOM is at the effective END date
+            // Block extends UPWARD to cover the previous working days
+            const blockBottomPosition = this.getPositionFromBottom(effectiveEndDate, totalDays) + 60;
             block.style.top = `${blockBottomPosition}px`;
-            block.style.height = `${duration * this.pixelsPerDay - 4}px`; // -4 for spacing
             
-            // Create WhatsApp link instead of using the original link
-            const whatsappLink = this.createWhatsAppLink(teamName, payment.startDate, payment.endDate);
+            // Height based on visual days covered
+            block.style.height = `${visualDays * this.pixelsPerDay - 4}px`;
+            
+            const whatsappLink = this.createWhatsAppLink(teamName, visualStartDateStr, payment.startDate);
             block.href = whatsappLink;
             block.target = '_blank';
             block.rel = 'noopener noreferrer';
             
-            // Block content
-            const startFormatted = this.formatDateForDisplay(startDate);
-            const endFormatted = this.formatDateForDisplay(endDate);
+            // Block content - show amount and date range
+            const visualStart = this.formatDateForDisplay(new Date(visualStartDateStr));
+            const paymentEnd = this.formatDateForDisplay(paymentDate);
+            const effectiveEnd = this.formatDateForDisplay(effectiveEndDate);
+            const amountDisplay = amount > 0 ? `$${amount.toFixed(0)}` : 'Debt';
             
-            //<div style="font-size: 10px; opacity: 0.9;">to</div>
-            //<div style="font-size: 11px; margin-top: 2px;">${endFormatted}</div>
+            // Show effective date if payment was on Sunday
+            const dateToShow = paymentDate.getDay() === 0 ? effectiveEnd : paymentEnd;
+            
             block.innerHTML = `
-                <div>
-                    <div style="font-size: 11px; margin-bottom: 2px;">${startFormatted}</div>
-                    
+                <div class="payment-content">
+                    <div class="payment-date">${dateToShow}</div>
+                    <div class="payment-amount">${amountDisplay}</div>
+                    ${visualDays > 1 ? `<div class="payment-days">${visualDays}d</div>` : ''}
                 </div>
             `;
 
@@ -252,7 +368,6 @@ class PaymentChart {
         const chartArea = document.getElementById('chartArea');
         chartArea.innerHTML = '';
 
-        // Find the most recent payment for each team individually
         const mostRecentPerTeam = this.findMostRecentPaymentPerTeam();
 
         const teams = this.data.teams;
@@ -261,10 +376,7 @@ class PaymentChart {
             chartArea.appendChild(column);
         });
 
-        // Synchronize scrolling between timeline and chart area
         this.synchronizeScrolling();
-        
-        // Scroll to bottom to show most recent items by default
         this.scrollToBottom();
     }
 
@@ -283,11 +395,9 @@ class PaymentChart {
     }
 
     scrollToBottom() {
-        // Scroll to bottom to show most recent items (they are positioned at the bottom)
         const timelineAxis = document.getElementById('timelineAxis');
         const chartArea = document.getElementById('chartArea');
         
-        // Use setTimeout to ensure DOM is fully rendered
         setTimeout(() => {
             timelineAxis.scrollTop = timelineAxis.scrollHeight;
             chartArea.scrollTop = chartArea.scrollHeight;
@@ -305,8 +415,6 @@ class PaymentChart {
     }
 
     async fetchDebtData() {
-        const calculatedDebts = this.calculateDefaultDebts();
-
         try {
             const response = await fetch('/api/debts');
             if (!response.ok) {
@@ -315,10 +423,15 @@ class PaymentChart {
 
             const payload = await response.json();
             const storedDebts = payload.debts || [];
-            return this.mergeDebtSummaries(calculatedDebts, storedDebts);
+            
+            // Add source label to indicate these are from the debt calculation script
+            return storedDebts.map(debt => ({
+                ...debt,
+                source: 'stored'
+            }));
         } catch (error) {
-            console.warn('Debt API unavailable, using default calculation.', error);
-            return calculatedDebts;
+            console.warn('Debt API unavailable.', error);
+            return [];
         }
     }
 

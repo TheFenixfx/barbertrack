@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
 """
-Barber Debt Calculator
+Barber Debt Calculator - Current Year (2026)
 
 Purpose:
-    Calculate accumulated debt for each barber based on their payment records.
+    Calculate accumulated debt for each barber ONLY for the current year (2026).
+    
+    This script filters debt periods to only include days from January 1, 2026
+    onwards, providing a year-specific debt report.
     
     Debt occurs when a barber's prepaid balance runs out (Amount=0) and they
     continue working without making a new payment. The script identifies:
@@ -14,9 +17,9 @@ Purpose:
     Days with positive Amount (remaining balance) are NOT counted as debt,
     even if there are gaps in the data - the prepaid balance covers those days.
 
-Rate Schedule:
-    - 2025: $7/day for barbers (Alejandro, Andres, David), $5/day for Genesis
-    - 2026: $8/day for barbers (Alejandro, Andres, David), $6/day for Genesis
+Rate Schedule for 2026:
+    - $8/day for barbers (Alejandro, Andres, David)
+    - $6/day for Genesis
     
     Sundays are always excluded from debt calculations.
 
@@ -27,21 +30,21 @@ Data Format:
     - Operation: Payment reference code (null/empty if no payment)
     
     When a payment is made, Amount starts high and decreases each day:
-    Example: $42 → $35 → $28 → $21 → $14 → $7 → $0 (each day subtracts $7)
+    Example: $42 → $35 → $28 → $21 → $14 → $7 → $0 (each day subtracts rate)
     
     When Amount reaches 0, debt begins accumulating until a new payment.
 
 Output:
-    Creates _debt.csv files in barbers/debts/ directory for each barber,
-    containing total debt days and amount, plus breakdown by debt period.
+    Creates _debt_2026.csv files in barbers/debts/ directory for each barber,
+    containing total debt days and amount for 2026 only.
 
 Usage:
-    python calculate_debt.py [directory]
+    python calculate_debt_2026.py [directory]
     
     If no directory provided, defaults to 'barbers' directory.
 
 Author: Barberia Payment System
-Date: 2025-04-11
+Date: 2026-04-11
 """
 
 import argparse
@@ -51,10 +54,15 @@ from datetime import datetime, timedelta
 from pathlib import Path
 
 
+# Current year for filtering
+CURRENT_YEAR = 2026
+YEAR_START = datetime(CURRENT_YEAR, 1, 1)
+
+
 def parse_arguments():
     """Parse command line arguments."""
     parser = argparse.ArgumentParser(
-        description="Calculate barber debt from payment records"
+        description=f"Calculate barber debt for year {CURRENT_YEAR}"
     )
     parser.add_argument(
         "directory",
@@ -142,26 +150,22 @@ def is_sunday(date):
     return date.weekday() == 6
 
 
-def get_daily_rate(date, barber_name):
+def get_daily_rate(barber_name):
     """
-    Get daily debt rate based on year and barber.
+    Get daily debt rate for the current year (2026).
     
-    Rate Schedule:
-        2025: $7/day for barbers, $5/day for Genesis
-        2026: $8/day for barbers, $6/day for Genesis
+    Rates for 2026:
+        - $8/day for barbers (Alejandro, Andres, David)
+        - $6/day for Genesis
     
     Args:
-        date: datetime object for the debt day
         barber_name: Name of the barber
         
     Returns:
         Daily rate as float
     """
     is_genesis = barber_name.lower() == 'genesis'
-    if date.year == 2025:
-        return 5.0 if is_genesis else 7.0
-    else:
-        return 6.0 if is_genesis else 8.0
+    return 6.0 if is_genesis else 8.0
 
 
 def is_debt_day(amount, operation):
@@ -211,15 +215,51 @@ def is_real_payment(amount, operation):
     return False
 
 
-def calculate_debt(csv_data, barber_name, current_date):
+def count_debt_days_in_range(start_date, end_date, barber_name):
     """
-    Calculate total debt for a barber.
+    Count debt days within a date range for the current year.
+    
+    Only counts days that fall within 2026 (Jan 1 onwards).
+    Sundays are excluded.
+    
+    Args:
+        start_date: Start of the range (datetime)
+        end_date: End of the range (datetime)
+        barber_name: Name of the barber
+        
+    Returns:
+        Tuple of (days_count, debt_amount)
+    """
+    # Only count days in current year
+    effective_start = max(start_date, YEAR_START)
+    effective_end = end_date
+    
+    if effective_start > effective_end:
+        return 0, 0.0
+    
+    days_count = 0
+    debt_amount = 0.0
+    rate = get_daily_rate(barber_name)
+    
+    temp = effective_start
+    while temp <= effective_end:
+        if not is_sunday(temp):
+            days_count += 1
+            debt_amount += rate
+        temp += timedelta(days=1)
+    
+    return days_count, debt_amount
+
+
+def calculate_debt_2026(csv_data, barber_name, current_date):
+    """
+    Calculate total debt for a barber for year 2026 only.
     
     Debt Logic:
         1. Find first real payment (to skip early placeholder entries)
         2. Track when balance runs out (Amount=0 with no Operation)
         3. Count explicit debt days and gap days until next payment
-        4. Gaps between payments with positive balance are NOT debt
+        4. Only include days from January 1, 2026 onwards
         
     Args:
         csv_data: List of CSV row dictionaries
@@ -228,9 +268,9 @@ def calculate_debt(csv_data, barber_name, current_date):
         
     Returns:
         Dictionary with:
-        - total_days: Total debt days
-        - total_debt: Total debt amount
-        - debt_periods: List of debt period details
+        - total_days: Total debt days in 2026
+        - total_debt: Total debt amount in 2026
+        - debt_periods: List of debt period details (filtered to 2026)
     """
     # Sort entries by date
     entries = []
@@ -247,7 +287,7 @@ def calculate_debt(csv_data, barber_name, current_date):
     
     entries.sort(key=lambda x: x['date'])
     
-    # Find first real payment (skip early placeholder entries with no payment data)
+    # Find first real payment
     first_payment_idx = None
     for i, e in enumerate(entries):
         if is_real_payment(e['amount'], e['operation']):
@@ -270,76 +310,62 @@ def calculate_debt(csv_data, barber_name, current_date):
         amount = e['amount']
         operation = e['operation']
         
-        # Check if this is a debt day (balance ran out)
+        # Check if this is a debt day
         if is_debt_day(amount, operation):
             if not in_debt:
                 in_debt = True
             
-            # Count this explicit debt day (excluding Sundays)
-            if not is_sunday(date):
-                rate = get_daily_rate(date, barber_name)
+            # Count this explicit debt day if in 2026 and not Sunday
+            if date.year == CURRENT_YEAR and not is_sunday(date):
+                rate = get_daily_rate(barber_name)
                 total_debt += rate
                 total_days += 1
         
         elif is_real_payment(amount, operation):
-            # Real payment found - end debt period if we were in one
+            # Real payment found
             if in_debt:
                 # Count gap days from last entry to this payment
-                # (these are missing days that occurred during debt period)
                 prev_entry_date = entries[i - 1]['date'] if i > 0 else None
                 
                 if prev_entry_date and prev_entry_date < date:
                     gap_start = prev_entry_date + timedelta(days=1)
                     gap_end = date - timedelta(days=1)
                     
-                    gap_debt = 0.0
-                    gap_days = 0
+                    # Only count days in 2026
+                    days, debt = count_debt_days_in_range(gap_start, gap_end, barber_name)
                     
-                    temp = gap_start
-                    while temp <= gap_end:
-                        if not is_sunday(temp):
-                            rate = get_daily_rate(temp, barber_name)
-                            gap_debt += rate
-                            gap_days += 1
-                        temp += timedelta(days=1)
-                    
-                    if gap_days > 0:
-                        total_debt += gap_debt
-                        total_days += gap_days
+                    if days > 0:
+                        total_debt += debt
+                        total_days += days
+                        # Record period (show effective dates in 2026)
+                        effective_start = max(gap_start, YEAR_START)
                         debt_periods.append({
-                            'from': gap_start.strftime('%Y-%m-%d'),
+                            'from': effective_start.strftime('%Y-%m-%d'),
                             'to': gap_end.strftime('%Y-%m-%d'),
-                            'days': gap_days,
-                            'debt': gap_debt
+                            'days': days,
+                            'debt': debt
                         })
                 
                 in_debt = False
     
-    # If still in debt at end of data, count gap to today
+    # If still in debt at end, count gap to today
     if in_debt:
         last_entry_date = entries[-1]['date']
         gap_start = last_entry_date + timedelta(days=1)
         gap_end = current_date
         
-        gap_debt = 0.0
-        gap_days = 0
+        # Only count days in 2026
+        days, debt = count_debt_days_in_range(gap_start, gap_end, barber_name)
         
-        temp = gap_start
-        while temp <= gap_end:
-            if not is_sunday(temp):
-                rate = get_daily_rate(temp, barber_name)
-                gap_debt += rate
-                gap_days += 1
-            temp += timedelta(days=1)
-        
-        if gap_days > 0:
-            total_debt += gap_debt
-            total_days += gap_days
+        if days > 0:
+            total_debt += debt
+            total_days += days
+            effective_start = max(gap_start, YEAR_START)
             debt_periods.append({
-                'from': gap_start.strftime('%Y-%m-%d'),
+                'from': effective_start.strftime('%Y-%m-%d'),
                 'to': gap_end.strftime('%Y-%m-%d'),
-                'days': gap_days,
-                'debt': gap_debt,
+                'days': days,
+                'debt': debt,
                 'is_current': True
             })
     
@@ -381,7 +407,7 @@ def write_debt_csv(barber_name, total_days, total_debt, output_directory, debt_p
     """
     output_directory = Path(output_directory)
     output_directory.mkdir(parents=True, exist_ok=True)
-    output_filename = f"{barber_name}_debt.csv"
+    output_filename = f"{barber_name}_debt_{CURRENT_YEAR}.csv"
     output_path = output_directory / output_filename
 
     try:
@@ -411,7 +437,7 @@ def write_debt_csv(barber_name, total_days, total_debt, output_directory, debt_p
 
 def process_barber_file(file_path, output_directory):
     """
-    Process a single barber CSV file and generate debt report.
+    Process a single barber CSV file and generate 2026 debt report.
     
     Args:
         file_path: Path to the barber's CSV file
@@ -429,7 +455,7 @@ def process_barber_file(file_path, output_directory):
             return {'barber': barber_name, 'success': False, 'error': 'Empty file'}
 
         current_date = datetime.now()
-        debt_info = calculate_debt(csv_data, barber_name, current_date)
+        debt_info = calculate_debt_2026(csv_data, barber_name, current_date)
 
         write_debt_csv(
             barber_name,
@@ -453,11 +479,11 @@ def process_barber_file(file_path, output_directory):
 
 def main():
     """
-    Main function to process all barber files.
+    Main function to process all barber files for 2026.
     
     Workflow:
         1. Find all CSV files in the input directory
-        2. Process each file to calculate debt
+        2. Process each file to calculate 2026 debt only
         3. Write debt reports to debts/ subdirectory
         4. Display summary results
     """
@@ -482,7 +508,8 @@ def main():
         sys.exit(0)
 
     print(f"Found {len(csv_files)} barber CSV files...")
-    print("Rate Schedule: 2025 = $7/$5, 2026 = $8/$6 (barbers/Genesis)")
+    print(f"Calculating debt for year {CURRENT_YEAR} only")
+    print(f"Rate Schedule: $8/day for barbers, $6/day for Genesis")
     print("-" * 50)
 
     successful = 0
