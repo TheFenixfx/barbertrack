@@ -1,5 +1,6 @@
 days_passed,debt_amount
-55,385.00
+58,412.00
 
-from,to,days,debt,is_current
-2025-10-31,2025-12-30,52,364.00,
+from,to,days,debt,type,is_current
+2025-10-31,2025-12-30,52,364.00,historical_gap,
+2026-04-26,2026-05-03,6,48.00,current,yes

@@ -15,7 +15,7 @@ Date,Sender,Amount (Bs),Bank,Reference (Last 4)
 
 Date,Sender,Amount (Bs),Bank,Operation,Concept
 07/01/2026,Jesus David,"2.183,17",BDV,004748724087,pago
-08/01/2026,Genesis,"1.605,16",BDV,004754387343,genesis
+c
 09/01/2026,Alejandro Peluquero,"2.569,00",BDV,004757354076,pago
 09/01/2026,Genesis,"1.626,95",BDV,004763031563,genesis
 09/01/2026,Andres,"6.834,00",BDV,004763844459,pago

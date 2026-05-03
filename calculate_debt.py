@@ -8,8 +8,8 @@ Purpose:
     Debt occurs when a barber's prepaid balance runs out (Amount=0) and they
     continue working without making a new payment. The script identifies:
     
-    1. Explicit debt days: Entries where Amount=0 and no Operation (payment)
-    2. Gap debt days: Missing days between when balance ran out and next payment
+    1. Historical debt gaps: Periods where Amount=0 followed by long gap to next payment
+    2. Current debt: Gap from last payment date to today
     
     Days with positive Amount (remaining balance) are NOT counted as debt,
     even if there are gaps in the data - the prepaid balance covers those days.
@@ -19,17 +19,6 @@ Rate Schedule:
     - 2026: $8/day for barbers (Alejandro, Andres, David), $6/day for Genesis
     
     Sundays are always excluded from debt calculations.
-
-Data Format:
-    Each CSV entry contains:
-    - endDate: The date of the entry (YYYY-MM-DD)
-    - Amount: Remaining prepaid balance for that day
-    - Operation: Payment reference code (null/empty if no payment)
-    
-    When a payment is made, Amount starts high and decreases each day:
-    Example: $42 → $35 → $28 → $21 → $14 → $7 → $0 (each day subtracts $7)
-    
-    When Amount reaches 0, debt begins accumulating until a new payment.
 
 Output:
     Creates _debt.csv files in barbers/debts/ directory for each barber,
@@ -74,10 +63,6 @@ def read_csv_file(file_path):
         
     Returns:
         List of dictionaries containing CSV rows
-        
-    Raises:
-        FileNotFoundError: If file doesn't exist
-        Exception: For other CSV reading errors
     """
     try:
         with open(file_path, 'r', encoding='utf-8') as file:
@@ -164,62 +149,17 @@ def get_daily_rate(date, barber_name):
         return 6.0 if is_genesis else 8.0
 
 
-def is_debt_day(amount, operation):
-    """
-    Check if an entry represents a debt day.
-    
-    A debt day occurs when:
-    - Amount is 0 or None (no prepaid balance)
-    - Operation is empty/null (no payment made)
-    
-    Args:
-        amount: The Amount value (parsed float or None)
-        operation: The Operation value (payment reference)
-        
-    Returns:
-        True if this is a debt day, False otherwise
-    """
-    # Invalid/null operation codes that indicate no real payment
-    null_operations = ['null', 'None', '000000', '00000000', '000000000000', '']
-    
-    if operation is None or not str(operation).strip() or str(operation).strip() in null_operations:
-        return amount == 0 or amount is None
-    return False
-
-
-def is_real_payment(amount, operation):
-    """
-    Check if an entry represents a real payment.
-    
-    A real payment has:
-    - Amount > 0 (positive balance)
-    - Valid Operation code (payment reference)
-    
-    Args:
-        amount: The Amount value (parsed float or None)
-        operation: The Operation value (payment reference)
-        
-    Returns:
-        True if this is a real payment, False otherwise
-    """
-    # Invalid/null operation codes
-    null_operations = ['null', 'None', '000000', '00000000', '000000000000', '']
-    
-    if amount and amount > 0:
-        if operation and str(operation).strip() and str(operation).strip() not in null_operations:
-            return True
-    return False
-
-
 def calculate_debt(csv_data, barber_name, current_date):
     """
     Calculate total debt for a barber.
     
     Debt Logic:
-        1. Find first real payment (to skip early placeholder entries)
-        2. Track when balance runs out (Amount=0 with no Operation)
-        3. Count explicit debt days and gap days until next payment
-        4. Gaps between payments with positive balance are NOT debt
+        TOTAL DEBT = Historical debt gaps + Current debt from last payment to today
+        
+        Historical debt gaps: Periods where Amount=0 (or very low) followed by 
+        long gap to next payment. This captures the Oct-Dec 2025 gaps.
+        
+        Current debt: Gap from last payment date to today.
         
     Args:
         csv_data: List of CSV row dictionaries
@@ -247,51 +187,70 @@ def calculate_debt(csv_data, barber_name, current_date):
     
     entries.sort(key=lambda x: x['date'])
     
-    # Find first real payment (skip early placeholder entries with no payment data)
-    first_payment_idx = None
-    for i, e in enumerate(entries):
-        if is_real_payment(e['amount'], e['operation']):
-            first_payment_idx = i
-            break
-    
-    if first_payment_idx is None:
+    if not entries:
         return {'total_days': 0, 'total_debt': 0.0, 'debt_periods': []}
     
     total_debt = 0.0
     total_days = 0
     debt_periods = []
     
-    # Track debt periods
-    in_debt = False
+    # Invalid/null operation codes that indicate no real payment
+    null_ops = ['null', 'None', '000000', '00000000', '000000000000', '']
     
-    for i in range(first_payment_idx, len(entries)):
+    # STEP 1: Find all historical debt gaps (Amount=0 or <=5, followed by long gap)
+    # We need to find the LAST consecutive debt entry before each payment gap
+    # to avoid counting overlapping periods
+    
+    i = 0
+    while i < len(entries):
         e = entries[i]
-        date = e['date']
         amount = e['amount']
         operation = e['operation']
+        date = e['date']
         
-        # Check if this is a debt day (balance ran out)
-        if is_debt_day(amount, operation):
-            if not in_debt:
-                in_debt = True
-            
-            # Count this explicit debt day (excluding Sundays)
-            if not is_sunday(date):
-                rate = get_daily_rate(date, barber_name)
-                total_debt += rate
-                total_days += 1
+        # Check if this is a debt endpoint (Amount=0 or very low, no valid operation)
+        is_debt_endpoint = False
+        if amount == 0 or (amount and amount <= 5):
+            op_str = str(operation).strip() if operation else ''
+            if not op_str or op_str in null_ops:
+                is_debt_endpoint = True
         
-        elif is_real_payment(amount, operation):
-            # Real payment found - end debt period if we were in one
-            if in_debt:
-                # Count gap days from last entry to this payment
-                # (these are missing days that occurred during debt period)
-                prev_entry_date = entries[i - 1]['date'] if i > 0 else None
+        if is_debt_endpoint:
+            # Find the LAST consecutive debt endpoint before a payment
+            last_debt_idx = i
+            for k in range(i + 1, len(entries)):
+                next_e = entries[k]
+                next_amt = next_e['amount']
+                next_op = next_e['operation']
+                next_op_str = str(next_op).strip() if next_op else ''
                 
-                if prev_entry_date and prev_entry_date < date:
-                    gap_start = prev_entry_date + timedelta(days=1)
-                    gap_end = date - timedelta(days=1)
-                    
+                # Check if still in debt state
+                if (next_amt == 0 or (next_amt and next_amt <= 5)) and (not next_op_str or next_op_str in null_ops):
+                    last_debt_idx = k
+                else:
+                    break
+            
+            # Now find next real payment after the last debt entry
+            next_payment = None
+            for j in range(last_debt_idx + 1, len(entries)):
+                next_e = entries[j]
+                next_amount = next_e['amount']
+                next_op = next_e['operation']
+                
+                # A real payment has positive amount and valid operation
+                next_op_str = str(next_op).strip() if next_op else ''
+                if next_amount and next_amount > 0 and next_op_str and next_op_str not in null_ops:
+                    next_payment = next_e
+                    break
+            
+            if next_payment:
+                # Calculate gap from LAST debt entry to next payment
+                last_debt_date = entries[last_debt_idx]['date']
+                gap_start = last_debt_date + timedelta(days=1)
+                gap_end = next_payment['date'] - timedelta(days=1)
+                
+                # Only count if gap is significant (more than 0 days)
+                if gap_start <= gap_end:
                     gap_debt = 0.0
                     gap_days = 0
                     
@@ -310,37 +269,56 @@ def calculate_debt(csv_data, barber_name, current_date):
                             'from': gap_start.strftime('%Y-%m-%d'),
                             'to': gap_end.strftime('%Y-%m-%d'),
                             'days': gap_days,
-                            'debt': gap_debt
+                            'debt': gap_debt,
+                            'type': 'historical_gap'
                         })
-                
-                in_debt = False
+            
+            # Skip to after the last debt entry we processed
+            i = last_debt_idx + 1
+        else:
+            i += 1
     
-    # If still in debt at end of data, count gap to today
-    if in_debt:
-        last_entry_date = entries[-1]['date']
-        gap_start = last_entry_date + timedelta(days=1)
+    # STEP 2: Calculate current debt from last payment to today
+    # Find the last entry with a valid payment
+    last_payment_entry = None
+    for e in reversed(entries):
+        op = e['operation']
+        amt = e['amount']
+        op_str = str(op).strip() if op else ''
+        if op_str and op_str not in null_ops:
+            if amt and amt > 0:
+                last_payment_entry = e
+                break
+    
+    if last_payment_entry:
+        last_payment_date = last_payment_entry['date']
+        
+        # Calculate days from last payment date to today (excluding Sundays)
+        gap_start = last_payment_date + timedelta(days=1)
         gap_end = current_date
         
-        gap_debt = 0.0
-        gap_days = 0
+        current_gap_debt = 0.0
+        current_gap_days = 0
         
         temp = gap_start
         while temp <= gap_end:
             if not is_sunday(temp):
                 rate = get_daily_rate(temp, barber_name)
-                gap_debt += rate
-                gap_days += 1
+                current_gap_debt += rate
+                current_gap_days += 1
             temp += timedelta(days=1)
         
-        if gap_days > 0:
-            total_debt += gap_debt
-            total_days += gap_days
+        if current_gap_days > 0:
+            total_debt += current_gap_debt
+            total_days += current_gap_days
             debt_periods.append({
                 'from': gap_start.strftime('%Y-%m-%d'),
                 'to': gap_end.strftime('%Y-%m-%d'),
-                'days': gap_days,
-                'debt': gap_debt,
-                'is_current': True
+                'days': current_gap_days,
+                'debt': current_gap_debt,
+                'is_current': True,
+                'last_payment': last_payment_date.strftime('%Y-%m-%d'),
+                'last_amount': last_payment_entry['amount']
             })
     
     return {
@@ -392,14 +370,16 @@ def write_debt_csv(barber_name, total_days, total_debt, output_directory, debt_p
             
             if debt_periods:
                 writer.writerow([])
-                writer.writerow(['from', 'to', 'days', 'debt', 'is_current'])
+                writer.writerow(['from', 'to', 'days', 'debt', 'type', 'is_current'])
                 for period in debt_periods:
                     is_current = 'yes' if period.get('is_current') else ''
+                    period_type = period.get('type', 'current')
                     writer.writerow([
                         period['from'],
                         period['to'],
                         period['days'],
                         f"{period['debt']:.2f}",
+                        period_type,
                         is_current
                     ])
 
@@ -483,7 +463,7 @@ def main():
 
     print(f"Found {len(csv_files)} barber CSV files...")
     print("Rate Schedule: 2025 = $7/$5, 2026 = $8/$6 (barbers/Genesis)")
-    print("-" * 50)
+    print("-" * 60)
 
     successful = 0
     for file_path in csv_files:
@@ -493,12 +473,12 @@ def main():
             successful += 1
             print(f"+ {result['barber']}: {result['total_days']} days = {result['total_debt']}")
             for period in result.get('debt_periods', []):
-                marker = " [CURRENT]" if period.get('is_current') else ""
+                marker = " [CURRENT]" if period.get('is_current') else " [HISTORICAL]"
                 print(f"    {period['from']} -> {period['to']}: {period['days']} days, ${period['debt']:.2f}{marker}")
         else:
             print(f"- {result['barber']}: {result['error']}")
 
-    print("-" * 50)
+    print("-" * 60)
     print(f"Completed: {successful}/{len(csv_files)} files processed")
 
 

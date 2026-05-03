@@ -13,7 +13,7 @@
    - Edit `calculate_debt.py` to adjust daily rates
    - Default rate: $8/day
    - Genesis special rate: $6/day
-
+c
 4. **Run debt calculator**
    - Execute `python calculate_debt.py`
    - Generates debt reports in `barbers/debts/`
